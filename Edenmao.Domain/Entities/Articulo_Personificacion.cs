@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Edenmao.Domain.Entities
 {
-    public class DetallePedido_Articulo
+    public class Articulo_Personificacion
     {
         [Key]
-        public int IdDetalleArticulo { get; set; }
-        public int IdPedido { get; set; }
+        public int Id { get; set; }
         public int IdArticulo { get; set; }
-        [ForeignKey("IdPedido")]
-        public Pedido? IdPedidoNav { get; set; }
         [ForeignKey("IdArticulo")]
         public Articulo? IdArticuloNav { get; set; }
+        public int IdPersonificacion { get; set; }
+        [ForeignKey("IdPersonificacion")]
+        public Personificacion? IdPersonificacionNav { get; set; }
     }
 }
