@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Edenmao.Infrastructure.Data;
+using Edenmao.Infrastructure.FileLogger;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(op =>
 {
     op.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL"));
+});
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddProvider(new FileLoggerProvider("logs.txt"));
 });
 
 var app = builder.Build();
