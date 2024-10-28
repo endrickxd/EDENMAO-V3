@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Edenmao.Domain.ClaseBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace Edenmao.Domain.Entities
 {
-    public class Cliente
+    public class Cliente : BaseEntity
     {
-        [Key]
-        public int IdCliente { get; set; }
         public int IdUsuario { get; set; }
         [StringLength(30)]
         public string Nombre { get; set; }
@@ -19,10 +18,10 @@ namespace Edenmao.Domain.Entities
         public string Apellido { get; set; }
         [StringLength(100)]
         public string Email { get; set; }
+        [StringLength(100)]
+        public string Direccion { get; set; }
         [StringLength(30)]
         public string Telefono { get; set; }
-        public DateTime FechaRegistro { get; set; }
-        public string Estatus { get; set; }
         [ForeignKey("IdUsuario")]
         public virtual Usuario? IdUsuarioNav { get; set; }
         [InverseProperty("IdClienteNav")]

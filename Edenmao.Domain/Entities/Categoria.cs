@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Edenmao.Domain.ClaseBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace Edenmao.Domain.Entities
 {
-    public class Categoria
+    public class Categoria : BaseEntity
     {
-        [Key]
-        public int IdCategoria { get; set; }
         [StringLength(30)]
         public string Nombre { get; set; }
         [StringLength(100)]

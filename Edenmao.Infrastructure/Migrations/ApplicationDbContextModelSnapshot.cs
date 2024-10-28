@@ -24,31 +24,29 @@ namespace Edenmao.Infrastructure.Migrations
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Articulo", b =>
                 {
-                    b.Property<int>("IdArticulo")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdArticulo"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Estatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("IdCategoria")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPersonificacion")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Precio")
                         .HasColumnType("decimal(18, 0)");
@@ -56,59 +54,90 @@ namespace Edenmao.Infrastructure.Migrations
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
-                    b.HasKey("IdArticulo");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdCategoria");
-
-                    b.HasIndex("IdPersonificacion");
 
                     b.ToTable("Articulos");
                 });
 
-            modelBuilder.Entity("Edenmao.Domain.Entities.Categoria", b =>
+            modelBuilder.Entity("Edenmao.Domain.Entities.Articulo_Personificacion", b =>
                 {
-                    b.Property<int>("IdCategoria")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCategoria"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdArticulo")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPersonificacion")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdArticulo");
+
+                    b.HasIndex("IdPersonificacion");
+
+                    b.ToTable("Articulos_Personificaciones");
+                });
+
+            modelBuilder.Entity("Edenmao.Domain.Entities.Categoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("IdCategoria");
+                    b.HasKey("Id");
 
                     b.ToTable("Categorias");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Cliente", b =>
                 {
-                    b.Property<int>("IdCliente")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCliente"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Direccion")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Estatus")
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("datetime2");
@@ -126,7 +155,7 @@ namespace Edenmao.Infrastructure.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("IdCliente");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdUsuario");
 
@@ -135,44 +164,14 @@ namespace Edenmao.Infrastructure.Migrations
 
             modelBuilder.Entity("Edenmao.Domain.Entities.DetallePedido", b =>
                 {
-                    b.Property<int>("IdDetallePedido")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDetallePedido"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("Descuento")
-                        .HasColumnType("decimal(18, 0)");
-
-                    b.Property<int>("IdPedido")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Itbis")
-                        .HasColumnType("decimal(18, 0)");
-
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("decimal(18, 0)");
-
-                    b.Property<decimal>("Subtotal")
-                        .HasColumnType("decimal(18, 0)");
-
-                    b.HasKey("IdDetallePedido");
-
-                    b.HasIndex("IdPedido");
-
-                    b.ToTable("DetallePedidos");
-                });
-
-            modelBuilder.Entity("Edenmao.Domain.Entities.DetallePedido_Articulo", b =>
-                {
-                    b.Property<int>("IdDetalleArticulo")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDetalleArticulo"));
 
                     b.Property<int>("IdArticulo")
                         .HasColumnType("int");
@@ -180,22 +179,54 @@ namespace Edenmao.Infrastructure.Migrations
                     b.Property<int>("IdPedido")
                         .HasColumnType("int");
 
-                    b.HasKey("IdDetalleArticulo");
+                    b.Property<decimal>("PrecioUnitario")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("IdArticulo");
 
                     b.HasIndex("IdPedido");
 
-                    b.ToTable("DetallePedidos_Articulos");
+                    b.ToTable("DetallePedidos");
+                });
+
+            modelBuilder.Entity("Edenmao.Domain.Entities.DetallePedido_Personificacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdDetallePedido")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPersonificacion")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdDetallePedido");
+
+                    b.HasIndex("IdPersonificacion");
+
+                    b.ToTable("DetallePedidos_Personificaciones");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Pedido", b =>
                 {
-                    b.Property<int>("IdPedido")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPedido"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Estatus")
                         .IsRequired()
@@ -204,85 +235,125 @@ namespace Edenmao.Infrastructure.Migrations
                     b.Property<DateTime>("FechaEmisión")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("IdCliente")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Subtotal")
-                        .HasColumnType("decimal(18, 0)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18, 0)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<decimal>("TotalDescuento")
-                        .HasColumnType("decimal(18, 0)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<decimal>("TotalItbis")
-                        .HasColumnType("decimal(18, 0)");
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.HasKey("IdPedido");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdCliente");
+
+                    b.HasIndex("IdUsuario");
 
                     b.ToTable("Pedidos");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Personificacion", b =>
                 {
-                    b.Property<int>("IdPersonificacion")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPersonificacion"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("IdPersonificacion");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Personificaciones");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Rol", b =>
                 {
-                    b.Property<int>("IdRol")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdRol"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("IdRol");
+                    b.HasKey("Id");
 
                     b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Usuario", b =>
                 {
-                    b.Property<int>("IdUsuario")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuario"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("Estatus")
+                    b.Property<string>("Direccion")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
@@ -297,12 +368,17 @@ namespace Edenmao.Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("IdUsuario");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdRol");
 
@@ -317,13 +393,24 @@ namespace Edenmao.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("IdCategoriaNav");
+                });
+
+            modelBuilder.Entity("Edenmao.Domain.Entities.Articulo_Personificacion", b =>
+                {
+                    b.HasOne("Edenmao.Domain.Entities.Articulo", "IdArticuloNav")
+                        .WithMany("Articulo_Personificacion")
+                        .HasForeignKey("IdArticulo")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Edenmao.Domain.Entities.Personificacion", "IdPersonificacionNav")
-                        .WithMany("Articulos")
+                        .WithMany("Articulo_Personificacion")
                         .HasForeignKey("IdPersonificacion")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("IdCategoriaNav");
+                    b.Navigation("IdArticuloNav");
 
                     b.Navigation("IdPersonificacionNav");
                 });
@@ -341,25 +428,14 @@ namespace Edenmao.Infrastructure.Migrations
 
             modelBuilder.Entity("Edenmao.Domain.Entities.DetallePedido", b =>
                 {
-                    b.HasOne("Edenmao.Domain.Entities.Pedido", "IdPedidoNav")
-                        .WithMany("DetallePedidos")
-                        .HasForeignKey("IdPedido")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("IdPedidoNav");
-                });
-
-            modelBuilder.Entity("Edenmao.Domain.Entities.DetallePedido_Articulo", b =>
-                {
                     b.HasOne("Edenmao.Domain.Entities.Articulo", "IdArticuloNav")
-                        .WithMany("DetallePedido_Articulo")
+                        .WithMany()
                         .HasForeignKey("IdArticulo")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Edenmao.Domain.Entities.Pedido", "IdPedidoNav")
-                        .WithMany()
+                        .WithMany("DetallePedidos")
                         .HasForeignKey("IdPedido")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -367,6 +443,25 @@ namespace Edenmao.Infrastructure.Migrations
                     b.Navigation("IdArticuloNav");
 
                     b.Navigation("IdPedidoNav");
+                });
+
+            modelBuilder.Entity("Edenmao.Domain.Entities.DetallePedido_Personificacion", b =>
+                {
+                    b.HasOne("Edenmao.Domain.Entities.DetallePedido", "IdDetallePedidoNav")
+                        .WithMany("DetallePedido_Personificacion")
+                        .HasForeignKey("IdDetallePedido")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Edenmao.Domain.Entities.Personificacion", "IdPersonificacionNav")
+                        .WithMany()
+                        .HasForeignKey("IdPersonificacion")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IdDetallePedidoNav");
+
+                    b.Navigation("IdPersonificacionNav");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Pedido", b =>
@@ -377,7 +472,15 @@ namespace Edenmao.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Edenmao.Domain.Entities.Usuario", "IdUsuarioNav")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("IdClienteNav");
+
+                    b.Navigation("IdUsuarioNav");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Usuario", b =>
@@ -393,7 +496,7 @@ namespace Edenmao.Infrastructure.Migrations
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Articulo", b =>
                 {
-                    b.Navigation("DetallePedido_Articulo");
+                    b.Navigation("Articulo_Personificacion");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Categoria", b =>
@@ -406,6 +509,11 @@ namespace Edenmao.Infrastructure.Migrations
                     b.Navigation("Pedidos");
                 });
 
+            modelBuilder.Entity("Edenmao.Domain.Entities.DetallePedido", b =>
+                {
+                    b.Navigation("DetallePedido_Personificacion");
+                });
+
             modelBuilder.Entity("Edenmao.Domain.Entities.Pedido", b =>
                 {
                     b.Navigation("DetallePedidos");
@@ -413,7 +521,7 @@ namespace Edenmao.Infrastructure.Migrations
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Personificacion", b =>
                 {
-                    b.Navigation("Articulos");
+                    b.Navigation("Articulo_Personificacion");
                 });
 
             modelBuilder.Entity("Edenmao.Domain.Entities.Rol", b =>
@@ -424,6 +532,8 @@ namespace Edenmao.Infrastructure.Migrations
             modelBuilder.Entity("Edenmao.Domain.Entities.Usuario", b =>
                 {
                     b.Navigation("Clientes");
+
+                    b.Navigation("Pedidos");
                 });
 #pragma warning restore 612, 618
         }
