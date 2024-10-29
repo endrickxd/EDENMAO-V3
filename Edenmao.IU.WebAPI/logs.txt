@@ -1,0 +1,10 @@
+29/10/2024 10:53:31 a. m.: [Information] Now listening on: https://localhost:7111
+29/10/2024 10:53:31 a. m.: [Information] Now listening on: http://localhost:5039
+29/10/2024 10:53:31 a. m.: [Information] Application started. Press Ctrl+C to shut down.
+29/10/2024 10:53:31 a. m.: [Information] Hosting environment: Development
+29/10/2024 10:53:31 a. m.: [Information] Content root path: C:\Users\stopt\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+29/10/2024 10:54:47 a. m.: [Information] Now listening on: https://localhost:7111
+29/10/2024 10:54:47 a. m.: [Information] Now listening on: http://localhost:5039
+29/10/2024 10:54:47 a. m.: [Information] Application started. Press Ctrl+C to shut down.
+29/10/2024 10:54:47 a. m.: [Information] Hosting environment: Development
+29/10/2024 10:54:47 a. m.: [Information] Content root path: C:\Users\stopt\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
