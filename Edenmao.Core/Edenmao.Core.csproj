@@ -11,7 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
+    <Folder Include="DTOs\ArticuloDTO\" />
+    <Folder Include="DTOs\CategoriaDTO\" />
+    <Folder Include="DTOs\ClienteDTO\" />
+    <Folder Include="DTOs\DetallePedidoDTO\" />
+    <Folder Include="DTOs\UsuarioDTO\" />
+    <Folder Include="DTOs\RolDTO\" />
+    <Folder Include="DTOs\PersonificacionDTO\" />
+    <Folder Include="DTOs\PedidoDTO\" />
   </ItemGroup>
 
 </Project>
