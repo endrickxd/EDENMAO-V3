@@ -1,9 +1,27 @@
+using Microsoft.EntityFrameworkCore;
+using Edenmao.Infrastructure.Data;
+using Edenmao.Infrastructure.FileLogger;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddDbContext<ApplicationDbContext>(op =>
+{
+    op.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL"));
+});
+
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.AddProvider(new FileLoggerProvider("logs.txt"));
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
