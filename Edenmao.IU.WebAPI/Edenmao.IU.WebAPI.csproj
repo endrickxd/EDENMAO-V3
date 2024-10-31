@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Edenmao.Core\Edenmao.Core.csproj" />
+    <ProjectReference Include="..\Edenmao.Domain\Edenmao.Domain.csproj" />
+    <ProjectReference Include="..\Edenmao.Infrastructure\Edenmao.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
