@@ -24,7 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationCore", "Applicat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{4B6D461E-4F0E-429F-BAD3-F13234A6C0BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edenmao.IU.WebAPI", "Edenmao.IU.WebAPI\Edenmao.IU.WebAPI.csproj", "{C859483F-1AC2-4923-A564-2ECA9813F965}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Edenmao.IU.WebAPI", "Edenmao.IU.WebAPI\Edenmao.IU.WebAPI.csproj", "{C859483F-1AC2-4923-A564-2ECA9813F965}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{8BE9BE4D-0D94-46EF-9BF4-77B7265F7EB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
