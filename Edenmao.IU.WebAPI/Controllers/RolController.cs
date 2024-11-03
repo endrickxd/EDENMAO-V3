@@ -30,30 +30,30 @@ namespace Edenmao.IU.WebAPI.Controllers
         }
 
         [HttpGet("ObtenerRolPorID/{id}")]
-        public async Task<ActionResult<RolDTO>> GetRoleById(int id)
+        public async Task<ActionResult<RolDTO>> GetRolById(int id)
         {
-            var role = await _repository.GetByIdAsync(id);
+            var rol = await _repository.GetByIdAsync(id);
 
-            if (role == null)
+            if (rol == null)
             {
                 return NotFound();
             }
 
-            var roleDto = _mapper.Map<RolDTO>(role);
-            return Ok(roleDto);
+            var rolDto = _mapper.Map<RolDTO>(rol);
+            return Ok(rolDto);
         }
 
         [HttpPost("CrearRol")]
-        public async Task<ActionResult<RolDTO>> CreateRole([FromBody] CURol roleDTO)
+        public async Task<ActionResult<RolDTO>> CreateRol([FromBody] CURolDTO rolesDTO)
         {
-            var rol = _mapper.Map<Rol>(roleDTO);
+            var rol = _mapper.Map<Rol>(rolesDTO);
             await _repository.AddAsync(rol);
             var rolDTO = _mapper.Map<RolDTO>(rol);
-            return CreatedAtAction(nameof(GetRoleById), new { id = rolDTO.Id }, rolDTO);
+            return CreatedAtAction(nameof(GetRolById), new { id = rolDTO.Id }, rolDTO);
         }
 
         [HttpPut("EditarRol/{id}")]
-        public async Task<IActionResult> UpdateRole(int id, [FromBody] CURol rolesDTO)
+        public async Task<IActionResult> UpdateRol(int id, [FromBody] CURolDTO rolesDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -75,17 +75,17 @@ namespace Edenmao.IU.WebAPI.Controllers
         }
 
         [HttpDelete("EliminarRol/{id}")]
-        public async Task<ActionResult<bool>> DeleteRole(int id)
+        public async Task<ActionResult<bool>> DeleteRol(int id)
         {
-            var roles = await _repository.GetByIdAsync(id);
+            var rol = await _repository.GetByIdAsync(id);
 
-            if (roles == null)
+            if (rol == null)
             {
                 return NotFound();
             }
 
             await _repository.DeleteByIdAsync(id);
-            return Ok(roles);
+            return Ok(rol);
         }
     }
 }

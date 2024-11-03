@@ -21,7 +21,9 @@ builder.Services.AddLogging(loggingBuilder =>
     loggingBuilder.AddProvider(new FileLoggerProvider("logs.txt"));
 });
 
+builder.Services.AddScoped<IRepository<Articulo>, ArticuloRepository>();
 builder.Services.AddScoped<IRepository<Rol>, RolRepository>();
+builder.Services.AddScoped<IRepository<Categoria>, CategoriaRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
