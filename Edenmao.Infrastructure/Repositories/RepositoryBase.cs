@@ -49,7 +49,7 @@ namespace Edenmao.Infrastructure.Repositories
             return await _entites.Where(e => e.Id == id && e.Eliminado == false).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
         {
             return await _entites.Where(predicate).ToListAsync();
         }
@@ -62,6 +62,30 @@ namespace Edenmao.Infrastructure.Repositories
             _context.Entry(existingEntity).Property(e => e.FechaRegistro).IsModified = false;
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.ToListAsync();
         }
     }
 }

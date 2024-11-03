@@ -11,8 +11,10 @@ namespace Edenmao.Core.Interfaces
     public interface IRepository<T> where T : BaseEntity
     {
         Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes);
         Task<IEnumerable<T>> GetAllAsync();
-        Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes);
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task<bool?> DeleteByIdAsync(int id);

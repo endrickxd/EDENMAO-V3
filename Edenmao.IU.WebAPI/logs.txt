@@ -348,3 +348,163 @@ WHERE [r].[Eliminado] = CAST(0 AS bit)
 SELECT TOP(1) [r].[Id], [r].[Descripcion], [r].[Eliminado], [r].[FechaRegistro], [r].[Nombre]
 FROM [Roles] AS [r]
 WHERE [r].[Id] = @__id_0 AND [r].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:22:50: [Information] Now listening on: https://localhost:7118
+03/11/2024 13:22:50: [Information] Now listening on: http://localhost:5179
+03/11/2024 13:22:50: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 13:22:50: [Information] Hosting environment: Development
+03/11/2024 13:22:50: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 13:23:27: [Information] Executed DbCommand (46ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:23:34: [Information] Executed DbCommand (33ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (Size = 30)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Categorias] ([Descripcion], [Eliminado], [FechaRegistro], [Nombre])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+03/11/2024 13:23:39: [Information] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (Size = 30)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Categorias] ([Descripcion], [Eliminado], [FechaRegistro], [Nombre])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+03/11/2024 13:23:42: [Information] Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:23:54: [Information] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:23:57: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:24:00: [Information] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:24:45: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:24:45: [Information] Executed DbCommand (5ms) [Parameters=[@__entity_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__entity_Id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:24:45: [Information] Executed DbCommand (5ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 100), @p1='?' (Size = 30)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categorias] SET [Descripcion] = @p0, [Nombre] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+03/11/2024 13:24:51: [Information] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:25:28: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:25:28: [Information] Executed DbCommand (4ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categorias] SET [Eliminado] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+03/11/2024 13:25:47: [Information] Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:25:55: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 13:25:59: [Information] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+03/11/2024 14:22:59: [Information] Now listening on: https://localhost:7118
+03/11/2024 14:22:59: [Information] Now listening on: http://localhost:5179
+03/11/2024 14:22:59: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 14:22:59: [Information] Hosting environment: Development
+03/11/2024 14:22:59: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 14:23:11: [Information] Executed DbCommand (70ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+03/11/2024 14:25:38: [Information] Now listening on: https://localhost:7118
+03/11/2024 14:25:38: [Information] Now listening on: http://localhost:5179
+03/11/2024 14:25:38: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 14:25:38: [Information] Hosting environment: Development
+03/11/2024 14:25:38: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 14:25:43: [Information] Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+03/11/2024 14:27:13: [Information] Now listening on: https://localhost:7118
+03/11/2024 14:27:13: [Information] Now listening on: http://localhost:5179
+03/11/2024 14:27:13: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 14:27:13: [Information] Hosting environment: Development
+03/11/2024 14:27:13: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 14:27:22: [Information] Executed DbCommand (60ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+03/11/2024 14:32:09: [Information] Now listening on: https://localhost:7118
+03/11/2024 14:32:09: [Information] Now listening on: http://localhost:5179
+03/11/2024 14:32:09: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 14:32:09: [Information] Hosting environment: Development
+03/11/2024 14:32:09: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 14:32:16: [Information] Executed DbCommand (49ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+03/11/2024 14:32:27: [Information] Executed DbCommand (42ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock]
+FROM [Articulos] AS [a]
+WHERE [a].[Id] = @__id_0 AND [a].[Eliminado] = CAST(0 AS bit)
+03/11/2024 18:44:48: [Information] Now listening on: https://localhost:7118
+03/11/2024 18:44:48: [Information] Now listening on: http://localhost:5179
+03/11/2024 18:44:49: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 18:44:49: [Information] Hosting environment: Development
+03/11/2024 18:44:49: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 18:44:54: [Information] Executed DbCommand (47ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+03/11/2024 18:45:04: [Error] An unhandled exception has occurred while executing the request.
+03/11/2024 18:45:55: [Information] Now listening on: https://localhost:7118
+03/11/2024 18:45:55: [Information] Now listening on: http://localhost:5179
+03/11/2024 18:45:55: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 18:45:55: [Information] Hosting environment: Development
+03/11/2024 18:45:55: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 18:46:06: [Information] Executed DbCommand (111ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Id] = @__id_0
+03/11/2024 18:59:57: [Information] Now listening on: https://localhost:7118
+03/11/2024 18:59:57: [Information] Now listening on: http://localhost:5179
+03/11/2024 18:59:57: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 18:59:57: [Information] Hosting environment: Development
+03/11/2024 18:59:57: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 19:00:07: [Information] Executed DbCommand (104ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Id] = @__id_0
+03/11/2024 19:06:50: [Information] Now listening on: https://localhost:7118
+03/11/2024 19:06:50: [Information] Now listening on: http://localhost:5179
+03/11/2024 19:06:50: [Information] Application started. Press Ctrl+C to shut down.
+03/11/2024 19:06:50: [Information] Hosting environment: Development
+03/11/2024 19:06:50: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\Source\Repos\EDENMAO-V3\Edenmao.IU.WebAPI
+03/11/2024 19:06:56: [Information] Executed DbCommand (45ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+03/11/2024 19:08:24: [Information] Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
