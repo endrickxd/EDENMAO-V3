@@ -41,12 +41,12 @@ namespace Edenmao.Infrastructure.Repositories
 
         public async virtual Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _entites.ToListAsync();
+            return await _entites.Where(e => e.Eliminado == false).ToListAsync();
         }
 
         public async virtual Task<T> GetByIdAsync(int id)
         {
-            return await _entites.FindAsync(id);
+            return await _entites.Where(e => e.Id == id && e.Eliminado == false).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate)
@@ -56,7 +56,11 @@ namespace Edenmao.Infrastructure.Repositories
 
         public async virtual Task UpdateAsync(T entity)
         {
-            _entites.Update(entity);
+            var existingEntity = await _entites.Where(e => e.Id == entity.Id && e.Eliminado == false).FirstOrDefaultAsync();
+
+            _context.Entry(existingEntity).CurrentValues.SetValues(entity);
+            _context.Entry(existingEntity).Property(e => e.FechaRegistro).IsModified = false;
+
             await _context.SaveChangesAsync();
         }
     }
