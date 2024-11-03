@@ -26,8 +26,4 @@
     <ProjectReference Include="..\Edenmao.Domain\Edenmao.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
-
 </Project>
