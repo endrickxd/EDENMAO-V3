@@ -4,6 +4,7 @@ using Edenmao.Core.DTOs.Categoria;
 using Edenmao.Core.DTOs.Cliente;
 using Edenmao.Core.DTOs.Personificacion;
 using Edenmao.Core.DTOs.Rol;
+using Edenmao.Core.DTOs.Usuario;
 using Edenmao.Domain.Entities;
 using Edenmao.Infrastructure.Repositories;
 
@@ -31,6 +32,11 @@ namespace Edenmao.Infrastructure.Mappings
 
             CreateMap<Rol, RolDTO>().ReverseMap();
             CreateMap<CURolDTO, Rol>();
+
+            CreateMap<Usuario, UsuarioDTO>().
+                ForMember(d => d.NombreRol, o => o.MapFrom(c => c.IdRolNav.Nombre)).ReverseMap();
+            CreateMap<CUUsuarioDTO, Usuario>();
+            CreateMap<Usuario, UsuarioResponseDTO>();
         }
     }
 }
