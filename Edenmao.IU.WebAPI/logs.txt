@@ -1163,3 +1163,97 @@ SET NOCOUNT ON;
 UPDATE [Articulos] SET [Eliminado] = @p0
 OUTPUT 1
 WHERE [Id] = @p1;
+05/11/2024 12:50:03: [Information] Now listening on: https://localhost:7118
+05/11/2024 12:50:03: [Information] Now listening on: http://localhost:5179
+05/11/2024 12:50:03: [Information] Application started. Press Ctrl+C to shut down.
+05/11/2024 12:50:03: [Information] Hosting environment: Development
+05/11/2024 12:50:03: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\source\repos\EDENMAO-V3\Edenmao.IU.WebAPI
+05/11/2024 12:50:27: [Information] Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:51:22: [Information] Executed DbCommand (42ms) [Parameters=[@p0='?' (Size = 50), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (Size = 30), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Personificaciones] ([Descripcion], [Eliminado], [FechaRegistro], [Nombre], [Precio])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+05/11/2024 12:51:57: [Information] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 50), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (Size = 30), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Personificaciones] ([Descripcion], [Eliminado], [FechaRegistro], [Nombre], [Precio])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+05/11/2024 12:52:03: [Information] Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:52:18: [Information] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:52:20: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:52:23: [Information] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:52:26: [Information] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:52:29: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:53:36: [Information] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:53:36: [Information] Executed DbCommand (4ms) [Parameters=[@__entity_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__entity_Id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:53:36: [Information] Executed DbCommand (4ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 50), @p1='?' (Size = 30), @p2='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Personificaciones] SET [Descripcion] = @p0, [Nombre] = @p1, [Precio] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+05/11/2024 12:53:44: [Information] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:54:22: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:54:22: [Information] Executed DbCommand (8ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Personificaciones] SET [Eliminado] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+05/11/2024 12:54:39: [Information] Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:54:44: [Information] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:55:05: [Information] Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:55:19: [Information] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+05/11/2024 12:55:27: [Information] Now listening on: https://localhost:7118
+05/11/2024 12:55:27: [Information] Now listening on: http://localhost:5179
+05/11/2024 12:55:27: [Information] Application started. Press Ctrl+C to shut down.
+05/11/2024 12:55:27: [Information] Hosting environment: Development
+05/11/2024 12:55:27: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\source\repos\EDENMAO-V3\Edenmao.IU.WebAPI

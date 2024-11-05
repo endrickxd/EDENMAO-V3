@@ -40,7 +40,6 @@
   <ItemGroup>
     <Folder Include="DTOs\Cliente\" />
     <Folder Include="DTOs\Usuario\" />
-    <Folder Include="DTOs\Personificacion\" />
     <Folder Include="DTOs\Pedido\" />
   </ItemGroup>
 

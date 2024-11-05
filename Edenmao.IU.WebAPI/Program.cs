@@ -22,8 +22,10 @@ builder.Services.AddLogging(loggingBuilder =>
 });
 
 builder.Services.AddScoped<IRepository<Articulo>, ArticuloRepository>();
-builder.Services.AddScoped<IRepository<Rol>, RolRepository>();
 builder.Services.AddScoped<IRepository<Categoria>, CategoriaRepository>();
+builder.Services.AddScoped<IRepository<Personificacion>, PersonificacionRepository>();
+builder.Services.AddScoped<IRepository<Rol>, RolRepository>();
+
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
