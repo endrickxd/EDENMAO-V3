@@ -26,7 +26,7 @@ builder.Services.AddScoped<IRepository<Categoria>, CategoriaRepository>();
 builder.Services.AddScoped<IRepository<Cliente>, ClienteRepository>();
 builder.Services.AddScoped<IRepository<Personificacion>, PersonificacionRepository>();
 builder.Services.AddScoped<IRepository<Rol>, RolRepository>();
-
+builder.Services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

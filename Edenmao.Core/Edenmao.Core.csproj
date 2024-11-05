@@ -38,7 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Usuario\" />
     <Folder Include="DTOs\Pedido\" />
   </ItemGroup>
 
