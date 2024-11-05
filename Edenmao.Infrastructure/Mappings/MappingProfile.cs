@@ -19,7 +19,8 @@ namespace Edenmao.Infrastructure.Mappings
 
             CreateMap<Articulo, ArticuloDTO>().
                 ForMember(d => d.NombreCategoria, o => o.MapFrom(c => c.IdCategoriaNav.Nombre)).ReverseMap();
-
+            CreateMap<CUArticuloDTO, Articulo>();
+            CreateMap<Articulo, ArticuloResponseDTO>();
         }
     }
 }
