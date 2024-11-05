@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Edenmao.Core.DTOs.Articulo;
 using Edenmao.Core.DTOs.Categoria;
+using Edenmao.Core.DTOs.Cliente;
 using Edenmao.Core.DTOs.Personificacion;
 using Edenmao.Core.DTOs.Rol;
 using Edenmao.Domain.Entities;
@@ -19,6 +20,11 @@ namespace Edenmao.Infrastructure.Mappings
 
             CreateMap<Categoria, CategoriaDTO>().ReverseMap();
             CreateMap<CUCategoriaDTO, Categoria>();
+
+            CreateMap<Cliente, ClienteDTO>().
+                ForMember(d => d.RegistradoPor, o => o.MapFrom(c => c.IdUsuarioNav.Nombre)).ReverseMap();
+            CreateMap<CUClienteDTO, Cliente>();
+            CreateMap<Cliente, ClienteResponseDTO>();
 
             CreateMap<Personificacion, PersonificacionDTO>().ReverseMap();
             CreateMap<CUPersonificacionDTO, Personificacion>();

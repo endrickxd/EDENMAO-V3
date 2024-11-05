@@ -46,11 +46,6 @@ namespace Edenmao.Infrastructure.Repositories
             return await _entities.Where(e => e.Id == id && e.Eliminado == false).FirstOrDefaultAsync();
         }
 
-        //public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
-        //{
-        //    return await _entities.Where(e => e.Eliminado == false).Where(predicate).ToListAsync();
-        //}
-
         public async virtual Task UpdateAsync(T entity)
         {
             var existingEntity = await _entities.Where(e => e.Id == entity.Id && e.Eliminado == false).FirstOrDefaultAsync();
@@ -89,10 +84,8 @@ namespace Edenmao.Infrastructure.Repositories
         {
             IQueryable<T> query = _entities;
 
-            // Aplicar el filtro de entidades no eliminadas
             query = query.Where(e => !e.Eliminado);
 
-            // Aplicar el predicado adicional si se proporciona
             if (predicate != null)
             {
                 query = query.Where(predicate);

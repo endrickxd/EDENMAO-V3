@@ -28,21 +28,8 @@ namespace Edenmao.IU.WebAPI.Controllers
         [HttpGet("ObtenerArticulos")]
         public async Task<ActionResult<IEnumerable<ArticuloDTO>>> GetAllArticulos()
         {
-            ////var articulos = await _repository.GetAllAsync(a => a.IdCategoriaNav);
-            ////var articulosDtos = _mapper.Map<IEnumerable<ArticuloDTO>>(articulos);
-            ////return Ok(articulosDtos);
-            //// Obtiene los artículos no eliminados y carga la propiedad de navegación "IdCategoriaNav"
-            //var articulos = await _repository.GetAllAsync(
-            //    null,  // No hay predicado adicional
-            //    a => a.IdCategoriaNav // Incluir la propiedad de navegación para cargar la categoría
-            //);
-
-            //var articulosDtos = _mapper.Map<IEnumerable<ArticuloDTO>>(articulos);
-            //return Ok(articulosDtos);
-            // Obtiene los artículos que no están eliminados y cuya categoría tampoco está eliminada
-            var articulos = await _repository.GetAllAsync(
-                a => !a.Eliminado && a.IdCategoriaNav != null && !a.IdCategoriaNav.Eliminado, // Filtra por artículos y categorías no eliminadas
-                a => a.IdCategoriaNav // Incluye la categoría asociada
+            var articulos = await _repository.GetAllAsync(a => !a.Eliminado && a.IdCategoriaNav != null && !a.IdCategoriaNav.Eliminado,
+                a => a.IdCategoriaNav 
             );
 
             var articulosDtos = _mapper.Map<IEnumerable<ArticuloDTO>>(articulos);

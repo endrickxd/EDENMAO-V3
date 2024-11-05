@@ -1257,3 +1257,153 @@ WHERE [p].[Eliminado] = CAST(0 AS bit)
 05/11/2024 12:55:27: [Information] Application started. Press Ctrl+C to shut down.
 05/11/2024 12:55:27: [Information] Hosting environment: Development
 05/11/2024 12:55:27: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\source\repos\EDENMAO-V3\Edenmao.IU.WebAPI
+05/11/2024 13:31:37: [Information] Now listening on: https://localhost:7118
+05/11/2024 13:31:37: [Information] Now listening on: http://localhost:5179
+05/11/2024 13:31:37: [Information] Application started. Press Ctrl+C to shut down.
+05/11/2024 13:31:37: [Information] Hosting environment: Development
+05/11/2024 13:31:37: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\source\repos\EDENMAO-V3\Edenmao.IU.WebAPI
+05/11/2024 13:31:46: [Information] Executed DbCommand (57ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:36:11: [Information] Executed DbCommand (32ms) [Parameters=[@p0='?' (Size = 30), @p1='?' (Size = 100), @p2='?' (DbType = Boolean), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32), @p6='?' (Size = 30), @p7='?' (Size = 30)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Clientes] ([Apellido], [Direccion], [Eliminado], [Email], [FechaRegistro], [IdUsuario], [Nombre], [Telefono])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+05/11/2024 13:38:07: [Information] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 30), @p1='?' (Size = 100), @p2='?' (DbType = Boolean), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Int32), @p6='?' (Size = 30), @p7='?' (Size = 30)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Clientes] ([Apellido], [Direccion], [Eliminado], [Email], [FechaRegistro], [IdUsuario], [Nombre], [Telefono])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+05/11/2024 13:38:13: [Information] Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:41:52: [Information] Now listening on: https://localhost:7118
+05/11/2024 13:41:52: [Information] Now listening on: http://localhost:5179
+05/11/2024 13:41:52: [Information] Application started. Press Ctrl+C to shut down.
+05/11/2024 13:41:52: [Information] Hosting environment: Development
+05/11/2024 13:41:52: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\source\repos\EDENMAO-V3\Edenmao.IU.WebAPI
+05/11/2024 13:41:59: [Information] Executed DbCommand (49ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:42:19: [Information] Executed DbCommand (34ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:42:21: [Information] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:42:23: [Information] Executed DbCommand (31ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:42:27: [Information] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:43:08: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono]
+FROM [Clientes] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:43:08: [Information] Executed DbCommand (5ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Clientes] SET [Eliminado] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+05/11/2024 13:46:24: [Information] Now listening on: https://localhost:7118
+05/11/2024 13:46:24: [Information] Now listening on: http://localhost:5179
+05/11/2024 13:46:24: [Information] Application started. Press Ctrl+C to shut down.
+05/11/2024 13:46:24: [Information] Hosting environment: Development
+05/11/2024 13:46:24: [Information] Content root path: C:\Users\default.LAPTOP-MMOVFLL0\source\repos\EDENMAO-V3\Edenmao.IU.WebAPI
+05/11/2024 13:46:34: [Information] Executed DbCommand (46ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:47:08: [Information] Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:47:15: [Information] Executed DbCommand (33ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono]
+FROM [Clientes] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:47:16: [Information] Executed DbCommand (5ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Clientes] SET [Eliminado] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+05/11/2024 13:49:05: [Information] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono]
+FROM [Clientes] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:49:32: [Information] Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:50:07: [Information] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono]
+FROM [Clientes] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:50:07: [Information] Executed DbCommand (3ms) [Parameters=[@__entity_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono]
+FROM [Clientes] AS [c]
+WHERE [c].[Id] = @__entity_Id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:50:07: [Information] Executed DbCommand (5ms) [Parameters=[@p6='?' (DbType = Int32), @p0='?' (Size = 30), @p1='?' (Size = 100), @p2='?' (Size = 100), @p3='?' (DbType = Int32), @p4='?' (Size = 30), @p5='?' (Size = 30)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Clientes] SET [Apellido] = @p0, [Direccion] = @p1, [Email] = @p2, [IdUsuario] = @p3, [Nombre] = @p4, [Telefono] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+05/11/2024 13:50:26: [Information] Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:50:39: [Information] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono]
+FROM [Clientes] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:50:39: [Information] Executed DbCommand (7ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Clientes] SET [Eliminado] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+05/11/2024 13:50:49: [Information] Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:51:17: [Information] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:51:20: [Information] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+05/11/2024 13:51:25: [Information] Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
