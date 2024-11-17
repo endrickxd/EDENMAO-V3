@@ -7,18 +7,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs\ArticuloDTO\**" />
+    <Compile Remove="DTOs\CategoriaDTO\**" />
+    <Compile Remove="DTOs\ClienteDTO\**" />
+    <Compile Remove="DTOs\DetallePedidoDTO\**" />
+    <Compile Remove="DTOs\PedidoDTO\**" />
+    <Compile Remove="DTOs\PersonificacionDTO\**" />
+    <Compile Remove="DTOs\RolDTO\**" />
+    <Compile Remove="DTOs\UsuarioDTO\**" />
+    <EmbeddedResource Remove="DTOs\ArticuloDTO\**" />
+    <EmbeddedResource Remove="DTOs\CategoriaDTO\**" />
+    <EmbeddedResource Remove="DTOs\ClienteDTO\**" />
+    <EmbeddedResource Remove="DTOs\DetallePedidoDTO\**" />
+    <EmbeddedResource Remove="DTOs\PedidoDTO\**" />
+    <EmbeddedResource Remove="DTOs\PersonificacionDTO\**" />
+    <EmbeddedResource Remove="DTOs\RolDTO\**" />
+    <EmbeddedResource Remove="DTOs\UsuarioDTO\**" />
+    <None Remove="DTOs\ArticuloDTO\**" />
+    <None Remove="DTOs\CategoriaDTO\**" />
+    <None Remove="DTOs\ClienteDTO\**" />
+    <None Remove="DTOs\DetallePedidoDTO\**" />
+    <None Remove="DTOs\PedidoDTO\**" />
+    <None Remove="DTOs\PersonificacionDTO\**" />
+    <None Remove="DTOs\RolDTO\**" />
+    <None Remove="DTOs\UsuarioDTO\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Edenmao.Domain\Edenmao.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\ArticuloDTO\" />
-    <Folder Include="DTOs\CategoriaDTO\" />
-    <Folder Include="DTOs\ClienteDTO\" />
-    <Folder Include="DTOs\DetallePedidoDTO\" />
-    <Folder Include="DTOs\UsuarioDTO\" />
-    <Folder Include="DTOs\RolDTO\" />
-    <Folder Include="DTOs\PersonificacionDTO\" />
-    <Folder Include="DTOs\PedidoDTO\" />
+    <Folder Include="DTOs\Pedido\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

@@ -11,8 +11,8 @@ namespace Edenmao.Domain.ClaseBase
     {
         public BaseEntity()
         {
-            this.FechaRegistro = DateTime.Now;
-            this.Eliminado = false;
+            FechaRegistro = DateTime.Now;
+            Eliminado = false;
         }
         [Key]
         public int Id { get; set; }
