@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{8BE9BE4D-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{925BC8C0-30AE-47DA-9E76-C05A1F258A88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edenmao.UI.Frontend", "Edenmao.UI.Frontend\Edenmao.UI.Frontend.csproj", "{1413DCA6-20CF-44AA-8CD3-4D3C318B5F59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{C859483F-1AC2-4923-A564-2ECA9813F965}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C859483F-1AC2-4923-A564-2ECA9813F965}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C859483F-1AC2-4923-A564-2ECA9813F965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1413DCA6-20CF-44AA-8CD3-4D3C318B5F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1413DCA6-20CF-44AA-8CD3-4D3C318B5F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1413DCA6-20CF-44AA-8CD3-4D3C318B5F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1413DCA6-20CF-44AA-8CD3-4D3C318B5F59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{15915077-A367-48EB-9848-1CE665A34679} = {B101020E-06C6-4D90-9C14-B9DB31BF3566}
 		{C859483F-1AC2-4923-A564-2ECA9813F965} = {15915077-A367-48EB-9848-1CE665A34679}
 		{925BC8C0-30AE-47DA-9E76-C05A1F258A88} = {B101020E-06C6-4D90-9C14-B9DB31BF3566}
+		{1413DCA6-20CF-44AA-8CD3-4D3C318B5F59} = {925BC8C0-30AE-47DA-9E76-C05A1F258A88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F8F79BB2-93C4-45DE-987A-77C7999A809D}
