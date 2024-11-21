@@ -30,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{8BE9BE4D-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{925BC8C0-30AE-47DA-9E76-C05A1F258A88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edenmao.UI.Frontend", "Edenmao.UI.Frontend\Edenmao.UI.Frontend.csproj", "{1413DCA6-20CF-44AA-8CD3-4D3C318B5F59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Edenmao.UI.Frontend", "Edenmao.UI.Frontend\Edenmao.UI.Frontend.csproj", "{1413DCA6-20CF-44AA-8CD3-4D3C318B5F59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
