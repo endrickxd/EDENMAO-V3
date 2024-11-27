@@ -21,11 +21,11 @@ namespace Edenmao.UI.Frontend.Services
 			{
 				return await _httpClient.GetFromJsonAsync<ClienteDTO>($"api/Clientes/{id}");
 			}
-	    	public async Task<IEnumerable<UsuarioDTO>> GetAllEmpleados()
+	    	public async Task<IEnumerable<UsuarioDTO>> GetAllUsuario()
 		    {
 			return await _httpClient.GetFromJsonAsync<IEnumerable<UsuarioDTO>>("api/Usuarios");
 	       	}
-			public async Task CreateClientes(ClienteDTO clientes)
+		public async Task CreateClientes(ClienteDTO clientes)
 			{
 				await _httpClient.PostAsJsonAsync("api/Clientes", clientes);
 			}
