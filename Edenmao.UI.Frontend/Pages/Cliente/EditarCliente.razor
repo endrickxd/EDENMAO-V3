@@ -1,5 +1,101 @@
-﻿<h3>EditarCliente</h3>
+﻿@page "/clientes/edit/{id:int}"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Cliente
+@using Edenmao.Core.DTOs.Usuario
+@using Edenmao.UI.Frontend.Services
+@inject ClienteServices clienteservices
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3>Editar Cliente</h3>
+    <hr />
+
+     @if (cliente == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+
+    <EditForm Model="cliente" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+
+        <div class="form-group">
+            <label for="Nombre">Nombre</label>
+            <InputText id="Nombre" class="form-control" @bind-Value="cliente.Nombre" />
+            <ValidationMessage For="@(() => cliente.Nombre)" />
+        </div>
+        <div class="form-group">
+            <label for="Apellido">Apellido</label>
+            <InputText id="Apellido" class="form-control" @bind-Value="cliente.Apellido" />
+            <ValidationMessage For="@(() => cliente.Apellido)" />
+        </div>
+        <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <InputText id="telefono" class="form-control" @bind-Value="cliente.Telefono" />
+            <ValidationMessage For="@(() => cliente.Telefono)" />
+        </div>
+        <div class="form-group">
+            <label for="direccion">Direccion</label>
+            <InputText id="direccion" class="form-control" @bind-Value="cliente.Direccion" />
+            <ValidationMessage For="@(() => cliente.Direccion)" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <InputText id="email" class="form-control" @bind-Value="cliente.Email" />
+            <ValidationMessage For="@(() => cliente.Email)" />
+        </div>
+
+        <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <InputSelect id="usuario" class="form-control" @bind-Value="cliente.IdUsuario">
+                <option value="">------SELECCIONE El Usuario------</option>
+                @foreach (var usuario in usuarios)
+                {
+                    <option value="@usuario.Id">@usuario.Nombre</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => cliente.IdUsuario)" />
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="btn btn-success">Registrar Datos</button>
+            <button class="btn-back" @onclick="Volver">Volver</button>
+        </div>
+
+    </EditForm>
+
+    @if (!string.IsNullOrEmpty(Mensaje))
+    {
+        <div class="alert alert-success mt-3">@Mensaje</div>
+    }
+    }
+</div>
 
 @code {
+    [Parameter]
+    public int id { get; set; }
+    private ClienteDTO cliente;
+    private List<UsuarioDTO> usuarios = new List<UsuarioDTO>();
+    private string Mensaje;
 
+    protected override async Task OnInitializedAsync()
+    {
+        cliente = await clienteservices.GetClientesById(id);
+        usuarios = (await clienteservices.GetAllUsuario()).ToList();
+    }
+    private async Task HandleValidSubmit()
+    {
+        await clienteservices.UpdateClientes(id, cliente);
+        Mensaje = "¡Los Datos del Cliente han sido Actualizados de Manera Satisfactoria!";
+    }
+    private void Volver()
+    {
+        Navigation.NavigateTo("/cliente");
+    }
 }
+

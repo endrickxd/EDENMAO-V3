@@ -1,10 +1,103 @@
-﻿@page "/Cliente"
+﻿@page "/cliente"
 @using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Cliente
 @using Edenmao.UI.Frontend.Services
-@inject ClienteServices cliente;
+@inject ClienteServices clienteServices;
 @inject NavigationManager Navigation
-<h3>Cliente</h3>
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3><strong>Cliente</strong></h3>
+
+    <div class="NewRegister">
+        <a href="/cliente/create" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</a>
+    </div>
+
+    <input type="text" @bind="searchText" @oninput="FilterCliente" placeholder="Buscar Cliente (por (Nombre, Apellido)" class="form-control search-bar mb-3" />
+
+    @if (clientes == null)
+    {
+        <p><em>Cargando... Por favor, Espere</em></p>
+    }
+    else
+    {
+        <div class="table-container">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre del Cliente</th>
+                        <th>Apellido del Cliente</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Direccion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cliente in FilteredCliente)
+                    {
+                        <tr>
+                            <td>@cliente.Nombre</td>
+                            <td>@cliente.Apellido</td>
+                            <td>@cliente.Telefono</td>
+                            <td>@cliente.Email</td>
+                            <td>@cliente.Direccion</td>
+                            <td>
+                                <button class="btn btn-info" @onclick="() => VerCitas(cliente.Id)">Ver</button>
+                                <button class="btn btn-primary" @onclick="() => EditarCitas(cliente.Id)">Editar</button>
+                                <button class="btn btn-danger" @onclick="() => EliminarCitas(cliente.Id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
 
 @code {
+    private IEnumerable<ClienteDTO>? clientes;
+    private IEnumerable<ClienteDTO>? FilteredCliente;
+    private string searchText = string.Empty;
 
+    protected override async Task OnInitializedAsync()
+    {
+        clientes = await clienteServices.GetAllClientes();
+        FilteredCliente = clientes;
+    }
+
+    private void VerCitas(int id)
+    {
+        Navigation.NavigateTo($"/clientes/{id}");
+    }
+
+    private void EditarCitas(int id)
+    {
+        Navigation.NavigateTo($"/clientes/edit/{id}");
+    }
+
+    private async Task EliminarCitas(int id)
+    {
+        await clienteServices.DeleteClientes(id);
+        clientes = await clienteServices.GetAllClientes();
+        FilterCliente();
+    }
+
+    private void FilterCliente()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            FilteredCliente = clientes;
+        }
+        else
+        {
+            FilteredCliente = clientes?.Where(p =>
+                p.Nombre.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Apellido.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Email.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Direccion.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Telefono.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
+    }
 }

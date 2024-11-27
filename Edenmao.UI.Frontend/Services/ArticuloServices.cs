@@ -1,4 +1,6 @@
 ﻿using Edenmao.Core.DTOs.Articulo;
+using Edenmao.Core.DTOs.Categoria;
+using Edenmao.Core.DTOs.Usuario;
 using System.Net.Http.Json;
 
 namespace Edenmao.UI.Frontend.Services
@@ -17,6 +19,10 @@ namespace Edenmao.UI.Frontend.Services
 		public async Task<ArticuloDTO> GetArticulosById(int id)
 		{
 			return await _httpClient.GetFromJsonAsync<ArticuloDTO>($"api/Articulos/{id}");
+		}
+		public async Task<IEnumerable<CategoriaDTO>> GetAllCategoria()
+		{
+			return await _httpClient.GetFromJsonAsync<IEnumerable<CategoriaDTO>>("api/Categorias");
 		}
 		public async Task CreateArticulos(ArticuloDTO articulo)
 		{
