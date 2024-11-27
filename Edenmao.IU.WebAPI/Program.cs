@@ -8,47 +8,55 @@ using Edenmao.Core.Interfaces;
 using Edenmao.Domain.Entities;
 using Edenmao.Infrastructure.Repositories;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddDbContext<ApplicationDbContext>(op =>
+namespace Edenmao.IU.WebAPI
 {
-    op.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL"));
-});
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddLogging(loggingBuilder =>
-{
-    loggingBuilder.AddProvider(new FileLoggerProvider("logs.txt"));
-});
+            builder.Services.AddDbContext<ApplicationDbContext>(op =>
+            {
+                op.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL"));
+            });
 
-builder.Services.AddScoped<IRepository<Articulo>, ArticuloRepository>();
-builder.Services.AddScoped<IRepository<Categoria>, CategoriaRepository>();
-builder.Services.AddScoped<IRepository<Cliente>, ClienteRepository>();
-builder.Services.AddScoped<IRepository<Personificacion>, PersonificacionRepository>();
-builder.Services.AddScoped<IRepository<Rol>, RolRepository>();
-builder.Services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
+            builder.Services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddProvider(new FileLoggerProvider("logs.txt"));
+            });
 
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+            builder.Services.AddScoped<IRepository<Articulo>, ArticuloRepository>();
+            builder.Services.AddScoped<IRepository<Categoria>, CategoriaRepository>();
+            builder.Services.AddScoped<IRepository<Cliente>, ClienteRepository>();
+            builder.Services.AddScoped<IRepository<Personificacion>, PersonificacionRepository>();
+            builder.Services.AddScoped<IRepository<Rol>, RolRepository>();
+            builder.Services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-var app = builder.Build();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseAuthorization();
+
+            app.MapControllers();
+
+            app.Run();
+        }
+    }
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
