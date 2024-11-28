@@ -1,0 +1,48 @@
+﻿@page "/Categorias/{id:int}"
+@inject CategoriaServices categoriaservices
+@page "/Categoria"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Categoria
+@using Edenmao.UI.Frontend.Services
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3>Detalle del Empleado</h3>
+
+    @if (categoria == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+        <div class="employee-details">
+            <p><strong>ID:</strong> @categoria.Id</p>
+            <p><strong>Nombre:</strong> @categoria.Nombre</p>
+            <p><strong>Apellido:</strong> @categoria.Descripcion</p>
+            <p><strong>Email:</strong> @categoria.FechaRegistro</p>            
+        </div>
+
+        <div class="button-container">
+            <button class="btn-back" @onclick="Volver">Regresar</button>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private CategoriaDTO? categoria;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categoria = await categoriaservices.GetCategoriasById(id);
+    }
+
+    private void Volver()
+    {
+        Navigation.NavigateTo("/Categorias");
+    }
+}

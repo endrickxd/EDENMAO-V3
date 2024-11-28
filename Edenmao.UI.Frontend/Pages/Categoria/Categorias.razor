@@ -1,0 +1,97 @@
+﻿@page "/Categorias"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Categoria
+@using Edenmao.UI.Frontend.Services
+@inject CategoriaServices categoriaservices;
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3><strong>Cliente</strong></h3>
+
+    <div class="NewRegister">
+        <a href="/categorias/create" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</a>
+    </div>
+
+    <input type="text" @bind="searchText" @oninput="Filtercategoria" placeholder="Buscar Categoria (por (Nombre, Descripcion)" class="form-control search-bar mb-3" />
+
+    @if (categorias == null)
+    {
+        <p><em>Cargando... Por favor, Espere</em></p>
+    }
+    else
+    {
+        <div class="table-container">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>categoria</th>
+                        <th>Descripcion</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var categoria in Filteredcategoria)
+                    {
+                        <tr>
+                            <td>@categoria.Nombre</td>
+                            <td>@categoria.Descripcion</td>
+                            <td>@categoria.FechaRegistro</td>
+                            <td>
+                                <button class="btn btn-info" @onclick="() => VerCategoria(categoria.Id)">Ver</button>
+                                <button class="btn btn-primary" @onclick="() => EditarCategoria(categoria.Id)">Editar</button>
+                                <button class="btn btn-danger" @onclick="() => EliminarCategoria(categoria.Id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@code {
+    private IEnumerable<CategoriaDTO>? categorias;
+    private IEnumerable<CategoriaDTO>? Filteredcategoria;
+    private string searchText = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categorias = await categoriaservices.GetAllCategorias();
+        Filteredcategoria = categorias;
+    }
+
+    private void VerCategoria(int id)
+    {
+        Navigation.NavigateTo($"/Categorias/{id}");
+    }
+
+    private void EditarCategoria(int id)
+    {
+        Navigation.NavigateTo($"/Categorias/edit/{id}");
+    }
+
+    private async Task EliminarCategoria(int id)
+    {
+        await categoriaservices.DeleteCategorias(id);
+        categorias = await categoriaservices.GetAllCategorias();
+        Filtercategoria();
+    }
+
+    private void Filtercategoria()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            Filteredcategoria = categorias;
+        }
+        else
+        {
+            Filteredcategoria = categorias?.Where(p =>
+                p.Nombre.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Descripcion.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.FechaRegistro.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
+    }
+}

@@ -1,5 +1,52 @@
-﻿<h3>DetalleCliente</h3>
+﻿@page "/clientes/{id:int}"
+@inject ClienteServices clienteservices
+@page "/clientes"
+@* @page "/clientes/{id:int}" *@
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Cliente
+@using Edenmao.UI.Frontend.Services
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3>Detalle del Empleado</h3>
+
+    @if (cliente == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+        <div class="employee-details">
+            <p><strong>ID:</strong> @cliente.Id</p>
+            <p><strong>Nombre:</strong> @cliente.Nombre</p>
+            <p><strong>Apellido:</strong> @cliente.Apellido</p>
+            <p><strong>Email:</strong> @cliente.Email</p>
+            <p><strong>Telefono:</strong> @cliente.Telefono</p>
+            <p><strong>Direccion:</strong> @cliente.Direccion</p>
+            <p><strong>Usuario:</strong> @cliente.IdUsuario</p>
+        </div>
+
+        <div class="button-container">
+            <button class="btn-back" @onclick="Volver">Regresar</button>
+        </div>
+    }
+</div>
 
 @code {
+    [Parameter]
+    public int id { get; set; }
+    private ClienteDTO? cliente;
 
+    protected override async Task OnInitializedAsync()
+    {
+        cliente = await clienteservices.GetClientesById(id);
+    }
+
+    private void Volver()
+    {
+        Navigation.NavigateTo("/clientes");
+    }
 }
