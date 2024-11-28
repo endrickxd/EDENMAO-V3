@@ -1,0 +1,103 @@
+﻿@* @page "/articulos"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Articulo
+@using Edenmao.UI.Frontend.Services
+@inject ArticuloServices articuloservices;
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3><strong>Cliente</strong></h3>
+
+    <div class="NewRegister">
+        <a href="/articulo/create" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</a>
+    </div>
+
+    <input type="text" @bind="searchText" @oninput="FilterArticulo" placeholder="Buscar Articulo (por (Nombre, Descripcion)" class="form-control search-bar mb-3" />
+
+    @if (articulos == null)
+    {
+        <p><em>Cargando... Por favor, Espere</em></p>
+    }
+    else
+    {
+        <div class="table-container">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Articulo</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var articulo in FilteredArticulo)
+                    {
+                        <tr>
+                            <td>@articulo.Nombre</td>
+                            <td>@articulo.Descripcion</td>
+                            <td>@articulo.Precio</td>
+                            <td>@articulo.Stock</td>
+                            <td>@articulo.NombreCategoria</td>
+                            <td>
+                                <button class="btn btn-info" @onclick="() => VerCitas(articulo.Id)">Ver</button>
+                                <button class="btn btn-primary" @onclick="() => EditarCitas(articulo.Id)">Editar</button>
+                                <button class="btn btn-danger" @onclick="() => EliminarCitas(articulo.Id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@code {
+    private IEnumerable<ArticuloDTO>? articulos;
+    private IEnumerable<ArticuloDTO>? FilteredArticulo;
+    private string searchText = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        articulos = await articuloservices.GetAllArticulos();
+        FilteredArticulo = articulos;
+    }
+
+    private void VerCitas(int id)
+    {
+        Navigation.NavigateTo($"/articulos/{id}");
+    }
+
+    private void EditarCitas(int id)
+    {
+        Navigation.NavigateTo($"/articulos/edit/{id}");
+    }
+
+    private async Task EliminarCitas(int id)
+    {
+        await articuloservices.DeleteArticulos(id);
+        articulos = await articuloservices.GetAllArticulos();
+        FilterArticulo();
+    }
+
+    private void FilterArticulo()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            FilteredArticulo = articulos;
+        }
+        else
+        {
+            FilteredArticulo = articulos?.Where(p =>
+                p.Nombre.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Descripcion.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Precio.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Stock.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.NombreCategoria.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
+    }
+} *@

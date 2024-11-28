@@ -24,7 +24,7 @@ namespace Edenmao.UI.Frontend.Services
 		{
 			await _httpClient.PostAsJsonAsync("api/Personificaciones", personificacion);
 		}
-		public async Task UpdateCategorias(int id, PersonificacionDTO personificacion)
+		public async Task UpdatePersonificaciones(int id, PersonificacionDTO personificacion)
 		{
 			var response = await _httpClient.PutAsJsonAsync($"api/Personificaciones/{id}", personificacion);
 			if (!response.IsSuccessStatusCode)
@@ -33,7 +33,7 @@ namespace Edenmao.UI.Frontend.Services
 				throw new Exception($"Error al actualizar las Personificaciones: {errorMessage}");
 			}
 		}
-		public async Task DeleteCategorias(int id)
+		public async Task DeletePersonificaciones(int id)
 		{
 			await _httpClient.DeleteAsync($"api/Personificaciones/{id}");
 		}

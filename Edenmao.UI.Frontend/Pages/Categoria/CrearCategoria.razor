@@ -1,0 +1,56 @@
+﻿@page "/Categorias/create"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Categoria
+@using Edenmao.UI.Frontend.Services
+@inject CategoriaServices categoriaservices
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3>Crear</h3>
+    <hr />
+
+    <EditForm Model="categoria" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator/>
+
+        <div class="form-group">
+            <label for="Nombre">Nombre</label>
+            <InputText id="Nombre" class="form-control" @bind-Value="categoria.Nombre" />
+            <ValidationMessage For="@(() => categoria.Nombre)" />
+        </div>
+
+        <div class="form-group">
+            <label for="Descripcion">Descripcion</label>
+            <InputText id="Descripcion" class="form-control" @bind-Value="categoria.Descripcion" />
+            <ValidationMessage For="@(() => categoria.Descripcion)" />
+        </div>
+       <div class="button-container">
+            <button type="submit" class="btn btn-success">Registrar Datos</button>
+            <button class="btn-back" @onclick="Volver">Volver</button>
+        </div>
+
+    </EditForm>
+
+    @if (!string.IsNullOrEmpty(Mensaje))
+    {
+        <div class="alert alert-success mt-3">@Mensaje</div>
+    }
+
+</div>
+
+@code {
+    private CategoriaDTO categoria = new CategoriaDTO();
+    private string Mensaje;
+
+    private async Task HandleValidSubmit()
+    {
+        await categoriaservices.CreateCategorias(categoria);
+        Mensaje = "¡Datos de la categoria Guardados de Manera Satisfactoria!";
+    }
+    private void Volver()
+    {
+        Navigation.NavigateTo("/Categorias");
+    }
+}

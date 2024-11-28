@@ -1,0 +1,100 @@
+﻿@page "/personificacion"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Personificacion
+@using Edenmao.UI.Frontend.Services
+@inject PersonificacionServices personificacionservices;
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3><strong>Cliente</strong></h3>
+
+    <div class="NewRegister">
+        <a href="/personificacion/create" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</a>
+    </div>
+
+    <input type="text" @bind="searchText" @oninput="FilterPersonificacion" placeholder="Buscar Personificacion (por (Nombre, Descripcion)" class="form-control search-bar mb-3" />
+
+    @if (personificacion == null)
+    {
+        <p><em>Cargando... Por favor, Espere</em></p>
+    }
+    else
+    {
+        <div class="table-container">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Personificacion</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var personificacion in FilteredPersonificacion)
+                    {
+                        <tr>
+                            <td>@personificacion.Nombre</td>
+                            <td>@personificacion.Descripcion</td>
+                            <td>@personificacion.Precio</td>
+                            <td>@personificacion.FechaRegistro</td>
+                            <td>
+                                <button class="btn btn-info" @onclick="() => VerPersofinicacion(personificacion.Id)">Ver</button>
+                                <button class="btn btn-primary" @onclick="() => EditarPersofinicacion(personificacion.Id)">Editar</button>
+                                <button class="btn btn-danger" @onclick="() => EliminarPersofinicacion(personificacion.Id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@code {
+    private IEnumerable<PersonificacionDTO>? personificacion;
+    private IEnumerable<PersonificacionDTO>? FilteredPersonificacion;
+    private string searchText = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        personificacion = await personificacionservices.GetAllPersonificacion();
+        FilteredPersonificacion = personificacion;
+    }
+
+    private void VerPersofinicacion(int id)
+    {
+        Navigation.NavigateTo($"/personificacion/{id}");
+    }
+
+    private void EditarPersofinicacion(int id)
+    {
+        Navigation.NavigateTo($"/personificacion/edit/{id}");
+    }
+
+    private async Task EliminarPersofinicacion(int id)
+    {
+        await personificacionservices.DeletePersonificaciones(id);
+        personificacion = await personificacionservices.GetAllPersonificacion();
+        FilterPersonificacion();
+    }
+
+    private void FilterPersonificacion()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            FilteredPersonificacion = personificacion;
+        }
+        else
+        {
+            FilteredPersonificacion = personificacion?.Where(p =>
+                p.Nombre.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Descripcion.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Precio.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.FechaRegistro.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
+    }
+}
