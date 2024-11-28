@@ -44,9 +44,9 @@
                             <td>@cliente.Email</td>
                             <td>@cliente.Direccion</td>
                             <td>
-                                <button class="btn btn-info" @onclick="() => VerCitas(cliente.Id)">Ver</button>
-                                <button class="btn btn-primary" @onclick="() => EditarCitas(cliente.Id)">Editar</button>
-                                <button class="btn btn-danger" @onclick="() => EliminarCitas(cliente.Id)">Eliminar</button>
+                                <button class="btn btn-info" @onclick="() => VerClientes(cliente.Id)">Ver</button>
+                                <button class="btn btn-primary" @onclick="() => EditarClientes(cliente.Id)">Editar</button>
+                                <button class="btn btn-danger" @onclick="() => EliminarClientes(cliente.Id)">Eliminar</button>
                             </td>
                         </tr>
                     }
@@ -67,17 +67,17 @@
         FilteredCliente = clientes;
     }
 
-    private void VerCitas(int id)
+    private void VerClientes(int id)
     {
         Navigation.NavigateTo($"/clientes/{id}");
     }
 
-    private void EditarCitas(int id)
+    private void EditarClientes(int id)
     {
         Navigation.NavigateTo($"/clientes/edit/{id}");
     }
 
-    private async Task EliminarCitas(int id)
+    private async Task EliminarClientes(int id)
     {
         await clienteServices.DeleteClientes(id);
         clientes = await clienteServices.GetAllClientes();

@@ -40,9 +40,9 @@
                             <td>@categoria.Descripcion</td>
                             <td>@categoria.FechaRegistro</td>
                             <td>
-                                <button class="btn btn-info" @onclick="() => VerCitas(categoria.Id)">Ver</button>
-                                <button class="btn btn-primary" @onclick="() => EditarCitas(categoria.Id)">Editar</button>
-                                <button class="btn btn-danger" @onclick="() => EliminarCitas(categoria.Id)">Eliminar</button>
+                                <button class="btn btn-info" @onclick="() => VerCategoria(categoria.Id)">Ver</button>
+                                <button class="btn btn-primary" @onclick="() => EditarCategoria(categoria.Id)">Editar</button>
+                                <button class="btn btn-danger" @onclick="() => EliminarCategoria(categoria.Id)">Eliminar</button>
                             </td>
                         </tr>
                     }
@@ -63,17 +63,17 @@
         Filteredcategoria = categorias;
     }
 
-    private void VerCitas(int id)
+    private void VerCategoria(int id)
     {
         Navigation.NavigateTo($"/categorias/{id}");
     }
 
-    private void EditarCitas(int id)
+    private void EditarCategoria(int id)
     {
         Navigation.NavigateTo($"/categorias/edit/{id}");
     }
 
-    private async Task EliminarCitas(int id)
+    private async Task EliminarCategoria(int id)
     {
         await categoriaservices.DeleteCategorias(id);
         categorias = await categoriaservices.GetAllCategorias();

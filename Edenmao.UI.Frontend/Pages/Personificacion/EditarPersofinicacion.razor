@@ -1,0 +1,78 @@
+﻿@page "/personificacion/edit/{id:int}"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Personificacion
+@using Edenmao.UI.Frontend.Services
+@inject PersonificacionServices personificacionservices
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3>Editar Personificacion</h3>
+    <hr />
+
+    @if (personificacion == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+
+        <EditForm Model="personificacion" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+
+            <div class="form-group">
+                <label for="Nombre">Nombre</label>
+                <InputText id="Nombre" class="form-control" @bind-Value="personificacion.Nombre" />
+                <ValidationMessage For="@(() => personificacion.Nombre)" />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripcion</label>
+                <InputText id="descripcion" class="form-control" @bind-Value="personificacion.Descripcion" />
+                <ValidationMessage For="@(() => personificacion.Descripcion)" />
+            </div>
+            <div class="form-group">
+                <label for="precio">Fecha De Registro</label>
+                <InputNumber id="precio" class="form-control" @bind-Value="personificacion.Precio" />
+                <ValidationMessage For="@(() => personificacion.Precio)" />
+            </div>
+            <div class="form-group">
+                <label for="date">Fecha De Registro</label>
+                <InputDate id="date" class="form-control" @bind-Value="personificacion.FechaRegistro" />
+                <ValidationMessage For="@(() => personificacion.FechaRegistro)" />
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn btn-success">Registrar Datos</button>
+                <button class="btn-back" @onclick="Volver">Volver</button>
+            </div>
+
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(Mensaje))
+        {
+            <div class="alert alert-success mt-3">@Mensaje</div>
+        }
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private PersonificacionDTO personificacion;
+    private string Mensaje;
+
+    protected override async Task OnInitializedAsync()
+    {
+        personificacion = await personificacionservices.GetPersonificacionById(id);
+    }
+    private async Task HandleValidSubmit()
+    {
+        await personificacionservices.UpdatePersonificaciones(id, personificacion);
+        Mensaje = "¡Los Datos del Personificacion han sido Actualizados de Manera Satisfactoria!";
+    }
+    private void Volver()
+    {
+        Navigation.NavigateTo("/personificacion");
+    }
+}
