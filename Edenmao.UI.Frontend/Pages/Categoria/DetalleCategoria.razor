@@ -1,7 +1,7 @@
-﻿@page "/categorias/{id:int}"
+﻿@page "/Categorias/{id:int}"
 @inject CategoriaServices categoriaservices
-@page "/categorias"
-@page "/categorias/{id:int}"
+@page "/Categorias"
+@page "/Categorias/{id:int}"
 @using Edenmao.Core.DTOs
 @using Edenmao.Core.DTOs.Categoria
 @using Edenmao.UI.Frontend.Services
@@ -44,6 +44,6 @@
 
     private void Volver()
     {
-        Navigation.NavigateTo("/categorias");
+        Navigation.NavigateTo("/Categorias");
     }
 }

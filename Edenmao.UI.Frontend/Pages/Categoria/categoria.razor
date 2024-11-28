@@ -1,4 +1,4 @@
-﻿@page "/categorias"
+﻿@page "/Categorias"
 @using Edenmao.Core.DTOs
 @using Edenmao.Core.DTOs.Categoria
 @using Edenmao.UI.Frontend.Services
@@ -65,12 +65,12 @@
 
     private void VerCategoria(int id)
     {
-        Navigation.NavigateTo($"/categorias/{id}");
+        Navigation.NavigateTo($"/Categorias/{id}");
     }
 
     private void EditarCategoria(int id)
     {
-        Navigation.NavigateTo($"/categorias/edit/{id}");
+        Navigation.NavigateTo($"/Categorias/edit/{id}");
     }
 
     private async Task EliminarCategoria(int id)
