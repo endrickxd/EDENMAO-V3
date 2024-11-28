@@ -1,5 +1,78 @@
-﻿<h3>CrearUsuario</h3>
+﻿@page "/CreateUsu"
+@using Edenmao.UI.Frontend.Modals
+@using Edenmao.UI.Frontend.Services
+@inject NavigationManager NavigationManager
+@inject UsuarioServices usuarioServices
+@inject RolServices rolServices
+
+
+<h3>Registro de usuario</h3>
+
+<EditForm Model="newUsuario" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-container" style="max-width: 400px; margin: auto;">
+        <div class="form-group">
+            <label for="Correo">Correo</label>
+            <InputText id="nombre" class="form-control" @bind-Value="newUsuario.Email" />
+        </div>
+        <div class="form-group">
+            <label for="Telefono">Telefono</label>
+            <InputText id="email" class="form-control" @bind-Value="newUsuario.Telefono" />
+        </div>
+        <div class="form-group">
+            <label for="Nombre">Nombre</label>
+            <InputText id="email" class="form-control" @bind-Value="newUsuario.Nombre" />
+        </div>
+        <div class="form-group">
+            <label for="Apellido">Apellido</label>
+            <InputText id="email" class="form-control" @bind-Value="newUsuario.Apellido" />
+        </div>
+
+        <div class="form-group">
+            <label for="Rol">Rol</label>
+            @if (roles != null && roles.Any())
+            {
+                <select id="Rol" class="form-control" @bind="newUsuario.IdRol">
+                    <option value="">Seleccione un rol</option>
+                    @foreach (var rolps in roles)
+                    {
+                        <option value="@rolps.Id">@rolps.Nombre</option>
+                    }
+                </select>
+            }
+            else
+            {
+                <p>No hay roles disponibles.</p>
+            }
+        </div>
+        <div class="form-group">
+            <label for="Usuario">Usuario</label>
+            <InputText id="usuario" class="form-control" @bind-Value="newUsuario.Username" />
+        </div>
+        <div class="form-group">
+            <label for="Contraseña">Contraseña</label>
+            <InputText id="contraseña" class="form-control" @bind-Value="newUsuario.Password" />
+        </div>
+        <button type="submit" class="btn btn-primary  mt-3">Agregar</button>
+
+    </div>
+
+</EditForm>
 
 @code {
+    private Usuariop newUsuario = new Usuariop();
+    private IEnumerable<Rolp> roles;
 
+    protected override async Task OnInitializedAsync()
+    {
+        roles = await rolServices.GetAllRols();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await usuarioServices.CreateUsuarios(newUsuario);
+        NavigationManager.NavigateTo("/Usuario");
+    }
 }

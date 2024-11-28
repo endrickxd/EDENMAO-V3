@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Edenmao.IU.WebAPI.Controllers
 {
-    [Route("api/Personificaciones")]
-    [ApiController]
-    public class PersonificacionController : ControllerBase
+	[Route("api/[Controller]")]
+	[ApiController]
+	public class PersonificacionController : ControllerBase
     {
         private readonly IRepository<Personificacion> _repository;
         private readonly IMapper _mapper;
@@ -22,7 +22,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet("ObtenerPersonificaciones")]
+        [HttpGet]
+        [Route("ObtenerPersonificaciones")]
         public async Task<ActionResult<IEnumerable<PersonificacionDTO>>> GetAllPersonificaciones()
         {
             var personificaciones = await _repository.GetAllAsync();
@@ -30,7 +31,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             return Ok(personificacionesDtos);
         }
 
-        [HttpGet("ObtenerPersonificacionPorID/{id}")]
+        [HttpGet]
+        [Route("ObtenerPersonificacionPorID/{id}")]
         public async Task<ActionResult<PersonificacionDTO>> GetPersonificacionById(int id)
         {
             var personificacion = await _repository.GetByIdAsync(id);
@@ -53,7 +55,7 @@ namespace Edenmao.IU.WebAPI.Controllers
             return CreatedAtAction(nameof(GetPersonificacionById), new { id = personificacionDTO.Id }, personificacionDTO);
         }
 
-        [HttpPut("EditarPersonificacion/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePersonificacion(int id, [FromBody] CUPersonificacionDTO personificacionesDTO)
         {
             if (!ModelState.IsValid)

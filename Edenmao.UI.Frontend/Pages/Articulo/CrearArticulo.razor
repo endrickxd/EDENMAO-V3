@@ -1,13 +1,10 @@
-﻿@* @page "/articulo/create"
-@using Edenmao.Core.DTOs
-@using Edenmao.Core.DTOs.Articulo
+﻿@page "/articulo/create"
+@using Edenmao.UI.Frontend.Modals
 @using Edenmao.Core.DTOs.Categoria
 @using Edenmao.UI.Frontend.Services
 @inject ArticuloServices articuloservices
+@inject CategoriaServices categoriaservices
 @inject NavigationManager Navigation
-
-<link href="~/css/app.css" rel="stylesheet" />
-<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
 <div class="container">
     <h3>Crear</h3>
@@ -43,7 +40,7 @@
             <label for="categoria">Categoria</label>
             <InputSelect id="categoria" class="form-control" @bind-Value="articulo.IdCategoria">
                 <option value="">------SELECCIONE LA CATEGORIA------</option>
-                @foreach (var categoria in categoria)
+                @foreach (var categoria in categoriaps)
                 {
                     <option value="@categoria.Id">@categoria.Nombre</option>
                 }
@@ -66,23 +63,23 @@
 </div>
 
 @code {
-    private ArticuloDTO articulo = new ArticuloDTO();
-    private List<CategoriaDTO> categoria = new List<CategoriaDTO>();
+    private Articulop articulo = new Articulop();
+    private List<Categoriap> categoriaps = new List<Categoriap>();
     private string Mensaje;
 
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     articulo = (await articuloservices.GetAllCategoria()).ToList();
-    // }
+    protected override async Task OnInitializedAsync()
+    {
+        categoriaps =  (await categoriaservices.GetAllCategorias()).ToList();
+    }
 
     private async Task HandleValidSubmit()
     {
         await articuloservices.CreateArticulos(articulo);
         Mensaje = "¡Datos del articulo Guardados de Manera Satisfactoria!";
+        Navigation.NavigateTo("/articulo");
     }
     private void Volver()
     {
-        Navigation.NavigateTo("/articulos");
+        Navigation.NavigateTo("/articulo");
     }
 }
- *@
