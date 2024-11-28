@@ -26,13 +26,7 @@
             <InputText id="Descripcion" class="form-control" @bind-Value="categoria.Descripcion" />
             <ValidationMessage For="@(() => categoria.Descripcion)" />
         </div>
-        <div class="form-group">
-            <label for="fecha">Precio</label>
-            <InputDate id="fecha" class="form-control" @bind-Value="categoria.FechaRegistro" />
-            <ValidationMessage For="@(() => categoria.FechaRegistro)" />
-        </div>
-
-        <div class="button-container">
+       <div class="button-container">
             <button type="submit" class="btn btn-success">Registrar Datos</button>
             <button class="btn-back" @onclick="Volver">Volver</button>
         </div>
