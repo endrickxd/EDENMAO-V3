@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Edenmao.Core\Edenmao.Core.csproj" />
+    <ProjectReference Include="..\Edenmao.Domain\Edenmao.Domain.csproj" />
   </ItemGroup>
 
 </Project>
