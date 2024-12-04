@@ -1,39 +1,39 @@
-﻿using Edenmao.UI.Frontend.Modals;
+﻿using Edenmao.Core.DTOs.Rol;
 using System.Net.Http.Json;
 
 namespace Edenmao.UI.Frontend.Services
 {
-	public class RolServices
-	{
-		private readonly HttpClient _httpClient;
-		public RolServices(HttpClient httpClient)
-		{
-			_httpClient = httpClient;
-		}
-		public async Task<IEnumerable<Rolp>> GetAllRols()
-		{
-			return await _httpClient.GetFromJsonAsync<IEnumerable<Rolp>>("api/Rol/ObtenerRol");
-		}
-		public async Task<Rolp> GetRolsById(int id)
-		{
-			return await _httpClient.GetFromJsonAsync<Rolp>($"api/Rol/ObtenerRolPorID/{id}");
-		}
-		public async Task CreateRols(Rolp Rol)
-		{
-			await _httpClient.PostAsJsonAsync("api/Roles/CrearRol", Rol);
-		}
-		public async Task UpdateRols(int id, Rolp Rol)
-		{
-			var response = await _httpClient.PutAsJsonAsync($"api/Rol/{id}", Rol);
-			if (!response.IsSuccessStatusCode)
-			{
-				var errorMessage = await response.Content.ReadAsStringAsync();
-				throw new Exception($"Error al actualizar las Roles: {errorMessage}");
-			}
-		}
-		public async Task DeleteRols(int id)
-		{
-			await _httpClient.DeleteAsync($"api/Rol/EliminarRol/{id}");
-		}
-	}
+    public class RolServices
+    {
+        private readonly HttpClient _httpClient;
+        public RolServices(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+        public async Task<IEnumerable<RolDTO>> GetAllRols()
+        {
+            return await _httpClient.GetFromJsonAsync<IEnumerable<RolDTO>>("api/Roles");
+        }
+        public async Task<RolDTO> GetRolsById(int id)
+        {
+            return await _httpClient.GetFromJsonAsync<RolDTO>($"api/Roles/{id}");
+        }
+        public async Task CreateRols(RolDTO Rol)
+        {
+            await _httpClient.PostAsJsonAsync("api/Roles", Rol);
+        }
+        public async Task UpdateRols(int id, RolDTO Rol)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/Roles/{id}", Rol);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al actualizar las Roles: {errorMessage}");
+            }
+        }
+        public async Task DeleteRols(int id)
+        {
+            await _httpClient.DeleteAsync($"api/Roles/{id}");
+        }
+    }
 }
