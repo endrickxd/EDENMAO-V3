@@ -1,4 +1,52 @@
-﻿<h3>DetalleRol</h3>
+﻿@page "/rol/{id:int}"
+@inject RolServices rolservices
+@page "/rol"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Rol
+@using Edenmao.UI.Frontend.Services
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3>Detalle del Empleado</h3>
+
+    @if (rol == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+        <div class="employee-details">
+            <p><strong>ID:</strong> @rol.Id</p>
+            <p><strong>Nombre:</strong> @rol.Nombre</p>
+            <p><strong>Apellido:</strong> @rol.Descripcion</p>
+            <p><strong>Email:</strong> @rol.FechaRegistro</p>
+        </div>
+
+        <div class="button-container">
+            <button class="btn-back" @onclick="Volver">Regresar</button>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private RolDTO? rol;
+
+    protected override async Task OnInitializedAsync()
+    {
+        rol = await rolservices.GetRolsById(id);
+    }
+
+    private void Volver()
+    {
+        Navigation.NavigateTo("/rol");
+    }
+}
+
 
 @code {
 

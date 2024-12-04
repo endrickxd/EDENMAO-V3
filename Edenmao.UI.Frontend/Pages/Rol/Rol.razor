@@ -1,4 +1,100 @@
-﻿<h3>Rol</h3>
+﻿@page "/rol"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Rol
+@using Edenmao.UI.Frontend.Services
+@inject RolServices rolservices;
+@inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3><strong>Roles</strong></h3>
+
+    <div class="NewRegister">
+        <a href="/rol/create" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</a>
+    </div>
+
+    <input type="text" @bind="searchText" @oninput="Filterrol" placeholder="Buscar rol (por (Nombre, Descripcion)" class="form-control search-bar mb-3" />
+
+    @if (rol == null)
+    {
+        <p><em>Cargando... Por favor, Espere</em></p>
+    }
+    else
+    {
+        <div class="table-container">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>categoria</th>
+                        <th>Descripcion</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var rol in Filteredrol)
+                    {
+                        <tr>
+                            <td>@rol.Nombre</td>
+                            <td>@rol.Descripcion</td>
+                            <td>@rol.FechaRegistro</td>
+                            <td>
+                                <button class="btn btn-info" @onclick="() => VerRol(rol.Id)">Ver</button>
+                                <button class="btn btn-primary" @onclick="() => EditarRol(rol.Id)">Editar</button>
+                                <button class="btn btn-danger" @onclick="() => EliminarRol(rol.Id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@code {
+    private IEnumerable<RolDTO>? rol;
+    private IEnumerable<RolDTO>? Filteredrol;
+    private string searchText = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        rol = await rolservices.GetAllRols();
+        Filteredrol = rol;
+    }
+
+    private void VerRol(int id)
+    {
+        Navigation.NavigateTo($"/rol/{id}");
+    }
+
+    private void EditarRol(int id)
+    {
+        Navigation.NavigateTo($"/rol/edit/{id}");
+    }
+
+    private async Task EliminarRol(int id)
+    {
+        await rolservices.DeleteRols(id);
+        rol = await rolservices.GetAllRols();
+        Filterrol();
+    }
+
+    private void Filterrol()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            Filteredrol = rol;
+        }
+        else
+        {
+            Filteredrol = rol?.Where(p =>
+                p.Nombre.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.Descripcion.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                p.FechaRegistro.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
+    }
+}
 
 @code {
 
