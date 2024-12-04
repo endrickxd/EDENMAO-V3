@@ -2431,3 +2431,216 @@ SELECT [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], 
 FROM [Usuarios] AS [u]
 INNER JOIN [Roles] AS [r] ON [u].[IdRol] = [r].[Id]
 WHERE [u].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit) AND [r].[Eliminado] = CAST(0 AS bit)
+4/12/2024 6:39:54 p. m.: [Information] Now listening on: https://localhost:7118
+4/12/2024 6:39:54 p. m.: [Information] Now listening on: http://localhost:5179
+4/12/2024 6:39:54 p. m.: [Information] Application started. Press Ctrl+C to shut down.
+4/12/2024 6:39:54 p. m.: [Information] Hosting environment: Development
+4/12/2024 6:39:54 p. m.: [Information] Content root path: C:\Users\Chocolatico RD\Desktop\EDENMAO-V3\Edenmao.IU.WebAPI
+4/12/2024 6:41:05 p. m.: [Information] Executed DbCommand (220ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+4/12/2024 6:41:07 p. m.: [Information] Executed DbCommand (122ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:40:09 a. m.: [Information] Now listening on: https://localhost:7118
+5/12/2024 9:40:09 a. m.: [Information] Now listening on: http://localhost:5179
+5/12/2024 9:40:09 a. m.: [Information] Application started. Press Ctrl+C to shut down.
+5/12/2024 9:40:09 a. m.: [Information] Hosting environment: Development
+5/12/2024 9:40:09 a. m.: [Information] Content root path: C:\Users\Chocolatico RD\Desktop\EDENMAO-V3\Edenmao.IU.WebAPI
+5/12/2024 9:41:35 a. m.: [Information] Executed DbCommand (291ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username], [r].[Id], [r].[Descripcion], [r].[Eliminado], [r].[FechaRegistro], [r].[Nombre]
+FROM [Usuarios] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[IdRol] = [r].[Id]
+WHERE [u].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit) AND [r].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:41:36 a. m.: [Information] Executed DbCommand (58ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username], [r].[Id], [r].[Descripcion], [r].[Eliminado], [r].[FechaRegistro], [r].[Nombre]
+FROM [Usuarios] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[IdRol] = [r].[Id]
+WHERE [u].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit) AND [r].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:41:40 a. m.: [Information] Executed DbCommand (236ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:41:42 a. m.: [Information] Executed DbCommand (51ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:41:43 a. m.: [Information] Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:41:44 a. m.: [Information] Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:41:47 a. m.: [Information] Executed DbCommand (352ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:42:08 a. m.: [Information] Now listening on: https://localhost:7118
+5/12/2024 9:42:08 a. m.: [Information] Now listening on: http://localhost:5179
+5/12/2024 9:42:09 a. m.: [Information] Application started. Press Ctrl+C to shut down.
+5/12/2024 9:42:09 a. m.: [Information] Hosting environment: Development
+5/12/2024 9:42:09 a. m.: [Information] Content root path: C:\Users\Chocolatico RD\Desktop\EDENMAO-V3\Edenmao.IU.WebAPI
+5/12/2024 9:44:00 a. m.: [Information] Executed DbCommand (1,347ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:01 a. m.: [Information] Executed DbCommand (1,296ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username], [r].[Id], [r].[Descripcion], [r].[Eliminado], [r].[FechaRegistro], [r].[Nombre]
+FROM [Usuarios] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[IdRol] = [r].[Id]
+WHERE [u].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit) AND [r].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:01 a. m.: [Information] Executed DbCommand (1,922ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:01 a. m.: [Information] Executed DbCommand (839ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:02 a. m.: [Information] Executed DbCommand (65ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:02 a. m.: [Information] Executed DbCommand (57ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:02 a. m.: [Information] Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:06 a. m.: [Information] Executed DbCommand (337ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:10 a. m.: [Information] Executed DbCommand (24ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:13 a. m.: [Information] Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:14 a. m.: [Information] Executed DbCommand (115ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:17 a. m.: [Information] Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:44:18 a. m.: [Information] Executed DbCommand (82ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 9:52:31 a. m.: [Information] Now listening on: https://localhost:7118
+5/12/2024 9:52:31 a. m.: [Information] Now listening on: http://localhost:5179
+5/12/2024 9:52:31 a. m.: [Information] Application started. Press Ctrl+C to shut down.
+5/12/2024 9:52:32 a. m.: [Information] Hosting environment: Development
+5/12/2024 9:52:32 a. m.: [Information] Content root path: C:\Users\Chocolatico RD\Desktop\EDENMAO-V3\Edenmao.IU.WebAPI
+5/12/2024 10:00:42 a. m.: [Information] Now listening on: https://localhost:7118
+5/12/2024 10:00:42 a. m.: [Information] Now listening on: http://localhost:5179
+5/12/2024 10:00:44 a. m.: [Information] Application started. Press Ctrl+C to shut down.
+5/12/2024 10:00:44 a. m.: [Information] Hosting environment: Development
+5/12/2024 10:00:45 a. m.: [Information] Content root path: C:\Users\Chocolatico RD\Desktop\EDENMAO-V3\Edenmao.IU.WebAPI
+5/12/2024 10:01:45 a. m.: [Information] Executed DbCommand (246ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:01:48 a. m.: [Information] Executed DbCommand (72ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:02 a. m.: [Information] Executed DbCommand (205ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Precision = 18) (DbType = Decimal), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Articulos] ([Descripcion], [Eliminado], [FechaRegistro], [IdCategoria], [Nombre], [Precio], [Stock])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+5/12/2024 10:02:02 a. m.: [Information] Executed DbCommand (44ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:13 a. m.: [Information] Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:15 a. m.: [Information] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Id] = @__id_0 AND [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:16 a. m.: [Information] Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:21 a. m.: [Information] Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:23 a. m.: [Information] Executed DbCommand (111ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:29 a. m.: [Information] Executed DbCommand (64ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], [c].[FechaRegistro], [c].[IdUsuario], [c].[Nombre], [c].[Telefono], [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username]
+FROM [Clientes] AS [c]
+INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
+WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:31 a. m.: [Information] Executed DbCommand (83ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:34 a. m.: [Information] Executed DbCommand (14ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:35 a. m.: [Information] Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:40 a. m.: [Information] Executed DbCommand (60ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:45 a. m.: [Information] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Id] = @__id_0 AND [p].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:45 a. m.: [Information] Executed DbCommand (286ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Personificaciones] SET [Eliminado] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+5/12/2024 10:02:46 a. m.: [Information] Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Descripcion], [p].[Eliminado], [p].[FechaRegistro], [p].[Nombre], [p].[Precio]
+FROM [Personificaciones] AS [p]
+WHERE [p].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:48 a. m.: [Information] Executed DbCommand (109ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username], [r].[Id], [r].[Descripcion], [r].[Eliminado], [r].[FechaRegistro], [r].[Nombre]
+FROM [Usuarios] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[IdRol] = [r].[Id]
+WHERE [u].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit) AND [r].[Eliminado] = CAST(0 AS bit)
+5/12/2024 10:02:48 a. m.: [Information] Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], [u].[FechaRegistro], [u].[IdRol], [u].[Nombre], [u].[Password], [u].[Telefono], [u].[Username], [r].[Id], [r].[Descripcion], [r].[Eliminado], [r].[FechaRegistro], [r].[Nombre]
+FROM [Usuarios] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[IdRol] = [r].[Id]
+WHERE [u].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit) AND [r].[Eliminado] = CAST(0 AS bit)
