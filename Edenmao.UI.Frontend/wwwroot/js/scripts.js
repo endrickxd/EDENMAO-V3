@@ -1,3 +1,4 @@
+feather.replace();
 $(function () {
 
     // init feather icons
