@@ -1,0 +1,90 @@
+﻿@page "/Usuario"
+@using Edenmao.UI.Frontend.Modals;
+@using Edenmao.UI.Frontend.Services;
+@inject IJSRuntime JSRuntime
+@inject UsuarioServices usuarioservices
+@inject NavigationManager NavigationManager
+
+
+<h3>Lisa de Usuarios</h3>
+
+<button class="btn btn-success" @onclick="CrearUsuario">Crear Usuario</button>
+
+
+@if (usuario == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha Registro</th>
+                <th>Rol</th>
+                <th>Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in usuario)
+            {
+                <tr>
+                    <td>@usuario.Id</td>
+                    <td>@usuario.Email</td>
+                    <td>@usuario.Telefono</td>
+                    <td>@usuario.Nombre</td>
+                    <td>@usuario.Apellido</td>
+                    <td>@usuario.NombreRol</td>
+                    <td>@usuario.Username</td>
+                    <td>@usuario.Password</td>
+                    <td>@usuario.FechaRegistro</td>
+                    <td>
+                        <NavLink class="btn btn-primary" href="@GetEditUrl(usuario.Id)">Editar</NavLink>
+                        <button class="btn btn-danger hover-danger" href="@EliminarUsuario(usuario.Id)">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Usuariop> usuario;
+
+    protected override async Task OnInitializedAsync()
+    {
+        usuario = await usuarioservices.GetAllUsuario();
+    }
+
+    private void CrearUsuario()
+    {
+        NavigationManager.NavigateTo("/CreateUsu");
+    }
+
+    private string GetEditUrl(int id)
+    {
+        return $"/editusuario/{id}";
+    }
+    private async Task EliminarUsuario(int id)
+    {
+        await usuarioservices.DeleteUsuarios(id);
+        usuario = await usuarioservices.GetAllUsuario();
+    }
+}
+
+<style>
+    .hover-primary:hover {
+        background-color: #53bd44;
+        border-color: none;
+    }
+
+    .hover-danger:hover {
+        background-color: #f10000;
+        border-color: none;
+    }
+</style>

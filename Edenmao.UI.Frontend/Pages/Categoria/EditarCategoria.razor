@@ -1,12 +1,8 @@
 ﻿@page "/Categorias/edit/{id:int}"
-@using Edenmao.Core.DTOs
-@using Edenmao.Core.DTOs.Categoria
+@using Edenmao.UI.Frontend.Modals
 @using Edenmao.UI.Frontend.Services
 @inject CategoriaServices categoriaservices
 @inject NavigationManager Navigation
-
-<link href="~/css/app.css" rel="stylesheet" />
-<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
 <div class="container">
     <h3>Editar Categoria</h3>
@@ -50,7 +46,7 @@
 @code {
     [Parameter]
     public int id { get; set; }
-    private CategoriaDTO categoria;
+    private Categoriap categoria;
     private string Mensaje;
 
     protected override async Task OnInitializedAsync()
@@ -61,10 +57,10 @@
     {
         await categoriaservices.UpdateCategorias(id, categoria);
         Mensaje = "¡Los Datos del Categoria han sido Actualizados de Manera Satisfactoria!";
+        Navigation.NavigateTo("/Categorias");
     }
     private void Volver()
     {
         Navigation.NavigateTo("/Categorias");
     }
 }
-

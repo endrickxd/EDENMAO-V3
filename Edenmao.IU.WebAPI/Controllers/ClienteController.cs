@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Edenmao.IU.WebAPI.Controllers
 {
-    [Route("api/Clientes")]
-    [ApiController]
-    public class ClienteController : ControllerBase
+	[Route("api/[Controller]")]
+	[ApiController]
+	public class ClienteController : ControllerBase
     {
         private readonly IRepository<Cliente> _repository;
         private readonly IMapper _mapper;
@@ -22,7 +22,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet("ObtenerClientes")]
+        [HttpGet]
+        [Route("ObtenerClientes")]
         public async Task<ActionResult<IEnumerable<ClienteDTO>>> GetAllClientes()
         {
             var clientes = await _repository.GetAllAsync(a => !a.Eliminado && a.IdUsuarioNav != null && !a.IdUsuarioNav.Eliminado,
@@ -33,7 +34,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             return Ok(clientesDtos);
         }
 
-        [HttpGet("ObtenerClientePorID/{id}")]
+        [HttpGet]
+        [Route("ObtenerClientePorID/{id}")]
         public async Task<ActionResult<ClienteDTO>> GetClienteById(int id)
         {
             var cliente = await _repository.GetByIdAsync(id, a => a.IdUsuarioNav);
@@ -56,7 +58,7 @@ namespace Edenmao.IU.WebAPI.Controllers
             return CreatedAtAction(nameof(GetClienteById), new { id = clienteDTO.Id }, clienteDTO);
         }
 
-        [HttpPut("EditarCliente/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCliente(int id, [FromBody] CUClienteDTO clientesDTO)
         {
             if (!ModelState.IsValid)

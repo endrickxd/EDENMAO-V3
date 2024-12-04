@@ -1,0 +1,54 @@
+﻿@page "/EditarPersonificacion/{id:int}"
+@using Edenmao.UI.Frontend.Services
+@using Edenmao.UI.Frontend.Prueba;
+@inject PersonificacionesServices personificacionservices;
+@inject NavigationManager navigation
+
+<h3>Editar Proveedor</h3>
+
+<EditForm Model="@personificacion" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <InputText id="nombre" class="form-control" @bind-Value="personificacion.Nombre" />
+    </div>
+    <div class="form-group">
+        <label for="Descripcion">Decripcion</label>
+        <InputText id="Decripcion" class="form-control" @bind-Value="personificacion.Descripcion" />
+    </div>
+    <div class="form-group">
+        <label for="precio">Precio</label>
+        <InputNumber id="Precio" class="form-control" @bind-Value="personificacion.Precio" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-secondary" @onclick="Cancelar">Cancelar</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private Personificacionp personificacion = new Personificacionp();
+
+    protected override async Task OnInitializedAsync()
+    {
+        personificacion = await personificacionservices.GetPersonificacionById(id);
+        if (personificacion == null)
+        {
+            navigation.NavigateTo("/personificacion");
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await  personificacionservices.UpdatePersonificaciones(id, personificacion);
+        navigation.NavigateTo("/personificacion");
+    }
+
+    private void Cancelar()
+    {
+        navigation.NavigateTo("/personificacion");
+    }
+}
