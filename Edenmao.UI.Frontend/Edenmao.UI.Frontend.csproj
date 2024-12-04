@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Edenmao.Core\Edenmao.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Rol\" />
-  </ItemGroup>
-
 </Project>
