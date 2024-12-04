@@ -1504,3 +1504,356 @@ SELECT [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], 
 FROM [Usuarios] AS [u]
 INNER JOIN [Roles] AS [r] ON [u].[IdRol] = [r].[Id]
 WHERE [u].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit) AND [r].[Eliminado] = CAST(0 AS bit)
+04/12/2024 4:29:11: [Information] Now listening on: https://localhost:7118
+04/12/2024 4:29:11: [Information] Now listening on: http://localhost:5179
+04/12/2024 4:29:11: [Information] Application started. Press Ctrl+C to shut down.
+04/12/2024 4:29:11: [Information] Hosting environment: Development
+04/12/2024 4:29:11: [Information] Content root path: C:\Users\joseo\OneDrive\Documentos\GitHub\EDENMAO-V3\Edenmao.IU.WebAPI
+04/12/2024 4:30:21: [Error] An error occurred using the connection to database 'SurPrintDB' on server 'ORLANDOABREU\SQLEXPRESS'.
+04/12/2024 4:30:21: [Error] An exception occurred while iterating over the results of a query for context type 'Edenmao.Infrastructure.Data.ApplicationDbContext'.
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): No se puede abrir la base de datos 'SurPrintDB' solicitada por el inicio de sesión. Error de inicio de sesión.
+Error de inicio de sesión del usuario 'ORLANDOABREU\joseo'.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+ClientConnectionId:64e278b9-797c-4886-b2b2-38581f2993e8
+Error Number:4060,State:1,Class:11
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+04/12/2024 4:30:21: [Error] An unhandled exception has occurred while executing the request.
+04/12/2024 4:46:36: [Information] Now listening on: https://localhost:7118
+04/12/2024 4:46:36: [Information] Now listening on: http://localhost:5179
+04/12/2024 4:46:36: [Information] Application started. Press Ctrl+C to shut down.
+04/12/2024 4:46:36: [Information] Hosting environment: Development
+04/12/2024 4:46:36: [Information] Content root path: C:\Users\joseo\OneDrive\Documentos\GitHub\EDENMAO-V3\Edenmao.IU.WebAPI
+04/12/2024 4:49:11: [Information] Executed DbCommand (168ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [SurPrintDB];
+04/12/2024 4:49:11: [Information] Executed DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [SurPrintDB] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+04/12/2024 4:49:11: [Information] Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+04/12/2024 4:49:11: [Information] Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+04/12/2024 4:49:11: [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1
+04/12/2024 4:49:11: [Information] Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+04/12/2024 4:49:11: [Information] Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+04/12/2024 4:49:11: [Information] Applying migration '20241028152228_ModificacionEntidades'.
+04/12/2024 4:49:11: [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Categorias] (
+    [Id] int NOT NULL IDENTITY,
+    [Nombre] nvarchar(30) NOT NULL,
+    [Descripcion] nvarchar(100) NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Eliminado] bit NOT NULL,
+    CONSTRAINT [PK_Categorias] PRIMARY KEY ([Id])
+);
+04/12/2024 4:49:11: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Personificaciones] (
+    [Id] int NOT NULL IDENTITY,
+    [Nombre] nvarchar(30) NOT NULL,
+    [Descripcion] nvarchar(50) NOT NULL,
+    [Precio] decimal(18,2) NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Eliminado] bit NOT NULL,
+    CONSTRAINT [PK_Personificaciones] PRIMARY KEY ([Id])
+);
+04/12/2024 4:49:11: [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Roles] (
+    [Id] int NOT NULL IDENTITY,
+    [Nombre] nvarchar(30) NOT NULL,
+    [Descripcion] nvarchar(50) NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Eliminado] bit NOT NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+04/12/2024 4:49:11: [Information] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Articulos] (
+    [Id] int NOT NULL IDENTITY,
+    [Nombre] nvarchar(max) NOT NULL,
+    [Descripcion] nvarchar(100) NOT NULL,
+    [Precio] decimal(18,0) NOT NULL,
+    [Stock] int NOT NULL,
+    [IdCategoria] int NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Eliminado] bit NOT NULL,
+    CONSTRAINT [PK_Articulos] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Articulos_Categorias_IdCategoria] FOREIGN KEY ([IdCategoria]) REFERENCES [Categorias] ([Id]) ON DELETE CASCADE
+);
+04/12/2024 4:49:11: [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Usuarios] (
+    [Id] int NOT NULL IDENTITY,
+    [IdRol] int NOT NULL,
+    [Nombre] nvarchar(30) NOT NULL,
+    [Apellido] nvarchar(30) NOT NULL,
+    [Email] nvarchar(100) NOT NULL,
+    [Direccion] nvarchar(100) NOT NULL,
+    [Telefono] nvarchar(30) NOT NULL,
+    [Username] nvarchar(30) NOT NULL,
+    [Password] nvarchar(255) NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Eliminado] bit NOT NULL,
+    CONSTRAINT [PK_Usuarios] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Usuarios_Roles_IdRol] FOREIGN KEY ([IdRol]) REFERENCES [Roles] ([Id]) ON DELETE CASCADE
+);
+04/12/2024 4:49:11: [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Articulos_Personificaciones] (
+    [Id] int NOT NULL IDENTITY,
+    [IdArticulo] int NOT NULL,
+    [IdPersonificacion] int NOT NULL,
+    CONSTRAINT [PK_Articulos_Personificaciones] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Articulos_Personificaciones_Articulos_IdArticulo] FOREIGN KEY ([IdArticulo]) REFERENCES [Articulos] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Articulos_Personificaciones_Personificaciones_IdPersonificacion] FOREIGN KEY ([IdPersonificacion]) REFERENCES [Personificaciones] ([Id]) ON DELETE CASCADE
+);
+04/12/2024 4:49:13: [Information] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Clientes] (
+    [Id] int NOT NULL IDENTITY,
+    [IdUsuario] int NOT NULL,
+    [Nombre] nvarchar(30) NOT NULL,
+    [Apellido] nvarchar(30) NOT NULL,
+    [Email] nvarchar(100) NOT NULL,
+    [Direccion] nvarchar(100) NOT NULL,
+    [Telefono] nvarchar(30) NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Eliminado] bit NOT NULL,
+    CONSTRAINT [PK_Clientes] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Clientes_Usuarios_IdUsuario] FOREIGN KEY ([IdUsuario]) REFERENCES [Usuarios] ([Id]) ON DELETE CASCADE
+);
+04/12/2024 4:49:13: [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [Pedidos] (
+    [Id] int NOT NULL IDENTITY,
+    [IdCliente] int NOT NULL,
+    [IdUsuario] int NOT NULL,
+    [Subtotal] decimal(18,2) NOT NULL,
+    [TotalDescuento] decimal(18,2) NOT NULL,
+    [TotalItbis] decimal(18,2) NOT NULL,
+    [Total] decimal(18,2) NOT NULL,
+    [FechaEmisión] datetime2 NOT NULL,
+    [Estatus] nvarchar(max) NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Eliminado] bit NOT NULL,
+    CONSTRAINT [PK_Pedidos] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Pedidos_Clientes_IdCliente] FOREIGN KEY ([IdCliente]) REFERENCES [Clientes] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Pedidos_Usuarios_IdUsuario] FOREIGN KEY ([IdUsuario]) REFERENCES [Usuarios] ([Id])
+);
+04/12/2024 4:49:14: [Information] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [DetallePedidos] (
+    [Id] int NOT NULL IDENTITY,
+    [IdPedido] int NOT NULL,
+    [IdArticulo] int NOT NULL,
+    [PrecioUnitario] decimal(18,2) NOT NULL,
+    [Cantidad] int NOT NULL,
+    CONSTRAINT [PK_DetallePedidos] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_DetallePedidos_Articulos_IdArticulo] FOREIGN KEY ([IdArticulo]) REFERENCES [Articulos] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_DetallePedidos_Pedidos_IdPedido] FOREIGN KEY ([IdPedido]) REFERENCES [Pedidos] ([Id]) ON DELETE CASCADE
+);
+04/12/2024 4:49:14: [Information] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE [DetallePedidos_Personificaciones] (
+    [Id] int NOT NULL IDENTITY,
+    [IdDetallePedido] int NOT NULL,
+    [IdPersonificacion] int NOT NULL,
+    [Precio] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_DetallePedidos_Personificaciones] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_DetallePedidos_Personificaciones_DetallePedidos_IdDetallePedido] FOREIGN KEY ([IdDetallePedido]) REFERENCES [DetallePedidos] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_DetallePedidos_Personificaciones_Personificaciones_IdPersonificacion] FOREIGN KEY ([IdPersonificacion]) REFERENCES [Personificaciones] ([Id]) ON DELETE CASCADE
+);
+04/12/2024 4:49:14: [Information] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Articulos_IdCategoria] ON [Articulos] ([IdCategoria]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Articulos_Personificaciones_IdArticulo] ON [Articulos_Personificaciones] ([IdArticulo]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Articulos_Personificaciones_IdPersonificacion] ON [Articulos_Personificaciones] ([IdPersonificacion]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Clientes_IdUsuario] ON [Clientes] ([IdUsuario]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_DetallePedidos_IdArticulo] ON [DetallePedidos] ([IdArticulo]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_DetallePedidos_IdPedido] ON [DetallePedidos] ([IdPedido]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_DetallePedidos_Personificaciones_IdDetallePedido] ON [DetallePedidos_Personificaciones] ([IdDetallePedido]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_DetallePedidos_Personificaciones_IdPersonificacion] ON [DetallePedidos_Personificaciones] ([IdPersonificacion]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Pedidos_IdCliente] ON [Pedidos] ([IdCliente]);
+04/12/2024 4:49:16: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Pedidos_IdUsuario] ON [Pedidos] ([IdUsuario]);
+04/12/2024 4:49:17: [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX [IX_Usuarios_IdRol] ON [Usuarios] ([IdRol]);
+04/12/2024 4:49:17: [Information] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20241028152228_ModificacionEntidades', N'8.0.10');
+04/12/2024 4:49:17: [Information] Applying migration '20241204083301_InitialMigration'.
+04/12/2024 4:49:17: [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20241204083301_InitialMigration', N'8.0.10');
+04/12/2024 4:49:17: [Information] Applying migration '20241204083924_probando'.
+04/12/2024 4:49:17: [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20241204083924_probando', N'8.0.10');
+04/12/2024 4:49:17: [Information] Applying migration '20241204084002_proband'.
+04/12/2024 4:49:17: [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20241204084002_proband', N'8.0.10');
+04/12/2024 4:49:17: [Information] Applying migration '20241204084326_ap'.
+04/12/2024 4:49:17: [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20241204084326_ap', N'8.0.10');
+04/12/2024 4:49:17: [Information] Applying migration '20241204084620_2'.
+04/12/2024 4:49:17: [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20241204084620_2', N'8.0.10');
+04/12/2024 4:49:18: [Information] Applying migration '20241204084745_3'.
+04/12/2024 4:49:18: [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20241204084745_3', N'8.0.10');
+04/12/2024 4:49:18: [Information] Applying migration '20241204084849_probandooo'.
+04/12/2024 4:49:18: [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20241204084849_probandooo', N'8.0.10');
+04/12/2024 4:51:06: [Information] Now listening on: https://localhost:7118
+04/12/2024 4:51:06: [Information] Now listening on: http://localhost:5179
+04/12/2024 4:51:06: [Information] Application started. Press Ctrl+C to shut down.
+04/12/2024 4:51:06: [Information] Hosting environment: Development
+04/12/2024 4:51:06: [Information] Content root path: C:\Users\joseo\OneDrive\Documentos\GitHub\EDENMAO-V3\Edenmao.IU.WebAPI
+04/12/2024 4:51:28: [Information] Executed DbCommand (39ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[Descripcion], [a].[Eliminado], [a].[FechaRegistro], [a].[IdCategoria], [a].[Nombre], [a].[Precio], [a].[Stock], [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Articulos] AS [a]
+INNER JOIN [Categorias] AS [c] ON [a].[IdCategoria] = [c].[Id]
+WHERE [a].[Eliminado] = CAST(0 AS bit) AND [a].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit)
+04/12/2024 4:53:09: [Information] Executed DbCommand (45ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Precision = 18) (DbType = Decimal), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Articulos] ([Descripcion], [Eliminado], [FechaRegistro], [IdCategoria], [Nombre], [Precio], [Stock])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+04/12/2024 4:53:09: [Error] An exception occurred in the database while saving changes for context type 'Edenmao.Infrastructure.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Articulos_Categorias_IdCategoria'. El conflicto ha aparecido en la base de datos 'SurPrintDB', tabla 'dbo.Categorias', column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:6659440a-56ad-454c-a78d-de7b49483bab
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+04/12/2024 4:53:09: [Error] An unhandled exception has occurred while executing the request.
+04/12/2024 4:53:12: [Information] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Precision = 18) (DbType = Decimal), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Articulos] ([Descripcion], [Eliminado], [FechaRegistro], [IdCategoria], [Nombre], [Precio], [Stock])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+04/12/2024 4:53:12: [Error] An exception occurred in the database while saving changes for context type 'Edenmao.Infrastructure.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Articulos_Categorias_IdCategoria'. El conflicto ha aparecido en la base de datos 'SurPrintDB', tabla 'dbo.Categorias', column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:6659440a-56ad-454c-a78d-de7b49483bab
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+04/12/2024 4:53:13: [Error] An unhandled exception has occurred while executing the request.
+04/12/2024 4:53:16: [Information] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (Size = 4000), @p5='?' (Precision = 18) (DbType = Decimal), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Articulos] ([Descripcion], [Eliminado], [FechaRegistro], [IdCategoria], [Nombre], [Precio], [Stock])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+04/12/2024 4:53:16: [Error] An exception occurred in the database while saving changes for context type 'Edenmao.Infrastructure.Data.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Articulos_Categorias_IdCategoria'. El conflicto ha aparecido en la base de datos 'SurPrintDB', tabla 'dbo.Categorias', column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:6659440a-56ad-454c-a78d-de7b49483bab
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+04/12/2024 4:53:16: [Error] An unhandled exception has occurred while executing the request.

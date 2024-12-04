@@ -22,6 +22,8 @@ namespace Edenmao.Infrastructure.Data
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      => optionsBuilder.UseSqlServer("Server=ACERN5-MASUEL\\Masuel;Database=SurPrintDB;integrated security=true; TrustServerCertificate=True");
+      => optionsBuilder.UseSqlServer("Server=ORLANDOABREU\\SQLEXPRESS;Database=SurPrintDB;integrated security=true; TrustServerCertificate=True");
+        
     }
+
 }
