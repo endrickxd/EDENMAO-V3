@@ -1,19 +1,15 @@
-﻿@page "/Categorias/create"
-@using Edenmao.Core.DTOs
-@using Edenmao.Core.DTOs.Categoria
+﻿@page "/categoria/create"
+@using Edenmao.UI.Frontend.Modals
 @using Edenmao.UI.Frontend.Services
 @inject CategoriaServices categoriaservices
 @inject NavigationManager Navigation
-
-<link href="~/css/app.css" rel="stylesheet" />
-<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
 <div class="container">
     <h3>Crear</h3>
     <hr />
 
     <EditForm Model="categoria" OnValidSubmit="HandleValidSubmit">
-        <DataAnnotationsValidator/>
+        <DataAnnotationsValidator />
 
         <div class="form-group">
             <label for="Nombre">Nombre</label>
@@ -26,7 +22,7 @@
             <InputText id="Descripcion" class="form-control" @bind-Value="categoria.Descripcion" />
             <ValidationMessage For="@(() => categoria.Descripcion)" />
         </div>
-       <div class="button-container">
+        <div class="button-container">
             <button type="submit" class="btn btn-success">Registrar Datos</button>
             <button class="btn-back" @onclick="Volver">Volver</button>
         </div>
@@ -41,13 +37,14 @@
 </div>
 
 @code {
-    private CategoriaDTO categoria = new CategoriaDTO();
+    private Categoriap categoria = new Categoriap();
     private string Mensaje;
 
     private async Task HandleValidSubmit()
     {
         await categoriaservices.CreateCategorias(categoria);
         Mensaje = "¡Datos de la categoria Guardados de Manera Satisfactoria!";
+        Navigation.NavigateTo("/Categorias");
     }
     private void Volver()
     {

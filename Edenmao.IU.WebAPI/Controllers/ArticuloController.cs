@@ -11,9 +11,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Edenmao.IU.WebAPI.Controllers
 {
-    [Route("api/Articulos")]
-    [ApiController]
-    public class ArticuloController : ControllerBase
+	[Route("api/[Controller]")]
+	[ApiController]
+
+	public class ArticuloController : ControllerBase
     {
         private readonly IRepository<Articulo> _repository;
         private readonly IMapper _mapper;
@@ -25,8 +26,9 @@ namespace Edenmao.IU.WebAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet("ObtenerArticulos")]
-        public async Task<ActionResult<IEnumerable<ArticuloDTO>>> GetAllArticulos()
+		[HttpGet]
+		[Route("ObtenerArticulos")]
+		public async Task<ActionResult<IEnumerable<ArticuloDTO>>> GetAllArticulos()
         {
             var articulos = await _repository.GetAllAsync(a => !a.Eliminado && a.IdCategoriaNav != null && !a.IdCategoriaNav.Eliminado,
                 a => a.IdCategoriaNav 
@@ -36,8 +38,9 @@ namespace Edenmao.IU.WebAPI.Controllers
             return Ok(articulosDtos);
         }
 
-        [HttpGet("ObtenerArticuloPorID/{id}")]
-        public async Task<ActionResult<ArticuloDTO>> GetArticuloById(int id)
+		[HttpGet]
+		[Route("ObtenerArticuloPorId/{id}")]
+		public async Task<ActionResult<ArticuloDTO>> GetArticuloById(int id)
         {
             var articulo = await _repository.GetByIdAsync(id, a => a.IdCategoriaNav);
 
@@ -59,8 +62,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             return CreatedAtAction(nameof(GetArticuloById), new { id = articuloDTO.Id }, articuloDTO);
         }
 
-        [HttpPut("EditarArticulo/{id}")]
-        public async Task<IActionResult> UpdateArticulo(int id, [FromBody] CUArticuloDTO articulosDTO)
+		[HttpPut("{id}")]
+		public async Task<IActionResult> UpdateArticulo(int id, [FromBody] CUArticuloDTO articulosDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -81,8 +84,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             return Ok(articuloDTO);
         }
 
-        [HttpDelete("EliminarArticulo/{id}")]
-        public async Task<ActionResult<bool>> DeleteArticulo(int id)
+		[HttpDelete("EliminarArticulo/{id}")]
+		public async Task<ActionResult<bool>> DeleteArticulo(int id)
         {
             var articulo = await _repository.GetByIdAsync(id);
 

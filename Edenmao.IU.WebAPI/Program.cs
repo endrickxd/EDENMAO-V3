@@ -35,7 +35,17 @@ namespace Edenmao.IU.WebAPI
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-            builder.Services.AddControllers();
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy("AllowLocalhost", policy =>
+				{
+					policy.WithOrigins("https://localhost:7166")
+						  .AllowAnyHeader()
+						  .AllowAnyMethod();
+				});
+			});
+
+			builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
             builder.Services.AddEndpointsApiExplorer();
@@ -50,7 +60,8 @@ namespace Edenmao.IU.WebAPI
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+			app.UseCors("AllowLocalhost");
+			app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
