@@ -1,6 +1,5 @@
-﻿@inherits LayoutComponentBase
-
-<PageTitle>My Blazor App</PageTitle>
+﻿@page "/"
+@inherits LayoutComponentBase
 
 <div class="page">
     <div class="sidebar">
@@ -8,8 +7,10 @@
     </div>
 
     <main>
-        <div class="content px-4">
-            @Body
-        </div>
+        @Body
     </main>
 </div>
+
+@code {
+   
+}
