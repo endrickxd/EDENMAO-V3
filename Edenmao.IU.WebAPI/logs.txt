@@ -2895,6 +2895,7 @@ Error Number:-1,State:0,Class:20
 5/12/2024 1:31:01 p. m.: [Information] Hosting environment: Development
 5/12/2024 1:31:01 p. m.: [Information] Content root path: C:\Users\stopt\OneDrive\Bilder\Proyecto2\Edenmao.IU.WebAPI
 >>>>>>> c53f3f8dbf2be69dcfadff1f377c5a3e1336bb50
+<<<<<<< HEAD
 5/12/2024 2:10:00 p. m.: [Information] Now listening on: https://localhost:7118
 5/12/2024 2:10:00 p. m.: [Information] Now listening on: http://localhost:5179
 5/12/2024 2:10:00 p. m.: [Information] Application started. Press Ctrl+C to shut down.
@@ -3013,3 +3014,5 @@ SELECT [c].[Id], [c].[Apellido], [c].[Direccion], [c].[Eliminado], [c].[Email], 
 FROM [Clientes] AS [c]
 INNER JOIN [Usuarios] AS [u] ON [c].[IdUsuario] = [u].[Id]
 WHERE [c].[Eliminado] = CAST(0 AS bit) AND [c].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit)
+=======
+>>>>>>> b05bdcd0f23d525deabae72e79bdc9de5090b27e
