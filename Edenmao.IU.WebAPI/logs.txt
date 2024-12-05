@@ -2644,3 +2644,22 @@ SELECT [u].[Id], [u].[Apellido], [u].[Direccion], [u].[Eliminado], [u].[Email], 
 FROM [Usuarios] AS [u]
 INNER JOIN [Roles] AS [r] ON [u].[IdRol] = [r].[Id]
 WHERE [u].[Eliminado] = CAST(0 AS bit) AND [u].[Eliminado] = CAST(0 AS bit) AND [r].[Eliminado] = CAST(0 AS bit)
+5/12/2024 1:19:51 p. m.: [Information] Now listening on: https://localhost:7118
+5/12/2024 1:19:51 p. m.: [Information] Now listening on: http://localhost:5179
+5/12/2024 1:19:51 p. m.: [Information] Application started. Press Ctrl+C to shut down.
+5/12/2024 1:19:51 p. m.: [Information] Hosting environment: Development
+5/12/2024 1:19:51 p. m.: [Information] Content root path: C:\Users\Chocolatico RD\Desktop\EDENMAO-V3\Edenmao.IU.WebAPI
+5/12/2024 1:21:06 p. m.: [Information] Executed DbCommand (227ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
+5/12/2024 1:21:34 p. m.: [Information] Executed DbCommand (218ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (DbType = Boolean), @p2='?' (DbType = DateTime2), @p3='?' (Size = 30)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Categorias] ([Descripcion], [Eliminado], [FechaRegistro], [Nombre])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+5/12/2024 1:21:34 p. m.: [Information] Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Descripcion], [c].[Eliminado], [c].[FechaRegistro], [c].[Nombre]
+FROM [Categorias] AS [c]
+WHERE [c].[Eliminado] = CAST(0 AS bit)
