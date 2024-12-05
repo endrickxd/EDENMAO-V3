@@ -1,40 +1,62 @@
-﻿@page "/CrearPresonificacion"
-@using Edenmao.UI.Frontend.Prueba
+﻿@page "/personificacion/create"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Personificacion
 @using Edenmao.UI.Frontend.Services
-@inject NavigationManager navigation
-@inject PersonificacionesServices personificacionservisces
+@inject PersonificacionServices personificacionservices
+@inject NavigationManager Navigation
 
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
+<div class="container">
+    <h3>Crear</h3>
+    <hr />
 
-<h3>Crear Proveedor</h3>
+    <EditForm Model="personificacion" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
 
-<EditForm Model="newpersonificacion" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+        <div class="form-group">
+            <label for="Nombre">Nombre</label>
+            <InputText id="Nombre" class="form-control" @bind-Value="personificacion.Nombre" />
+            <ValidationMessage For="@(() => personificacion.Nombre)" />
+        </div>
 
-    <div class="form-group">
-        <label for="name">Nombre</label>
-        <InputText id="name" class="form-control" @bind-Value="newpersonificacion.Nombre" />
-    </div>
-    <div class="form-group">
-        <label for="Descripcion">Descripcion</label>
-        <InputText id="Descripcion" class="form-control" @bind-Value="newpersonificacion.Descripcion" />
-    </div>
-    <div class="form-group">
-        <label for="Precio">Precio</label>
-        <InputNumber id="precio" class="form-control" @bind-Value="newpersonificacion.Precio" />
-    </div>
+        <div class="form-group">
+            <label for="Descripcion">Descripcion</label>
+            <InputText id="Descripcion" class="form-control" @bind-Value="personificacion.Descripcion" />
+            <ValidationMessage For="@(() => personificacion.Descripcion)" />
+        </div>
 
-    <button type="submit" class="btn btn-primary">Agregar</button>
-</EditForm>
+        <div class="form-group">
+            <label for="precio">Precio</label>
+            <InputNumber id="precio" class="form-control" @bind-Value="personificacion.Precio" />
+            <ValidationMessage For="@(() => personificacion.Precio)" />
+        </div>
+        <div class="button-container">
+            <button type="submit" class="btn btn-success">Registrar Datos</button>
+            <button class="btn-back" @onclick="Volver">Volver</button>
+        </div>
 
+    </EditForm>
+
+    @if (!string.IsNullOrEmpty(Mensaje))
+    {
+        <div class="alert alert-success mt-3">@Mensaje</div>
+    }
+
+</div>
 
 @code {
-    private Personificacionp newpersonificacion = new Personificacionp();
+    private PersonificacionDTO personificacion = new PersonificacionDTO();
+    private string Mensaje;
 
     private async Task HandleValidSubmit()
     {
-        await personificacionservisces.CreatePersonificaciones(newpersonificacion);
-        navigation.NavigateTo("/personificacion");
+        await personificacionservices.CreatePersonificaciones(personificacion);
+        Mensaje = "¡Datos de la Personificacion Guardados de Manera Satisfactoria!";
+    }
+    private void Volver()
+    {
+        Navigation.NavigateTo("/personificacion");
     }
 }
