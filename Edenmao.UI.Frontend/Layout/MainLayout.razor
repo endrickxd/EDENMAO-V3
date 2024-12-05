@@ -1,71 +1,129 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="layout-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <NavMenu />
-    </aside>
+    <!-- Header -->
+    <header class="header navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="">SURPRINT</a>
+
+            <!-- Toggle Button for Mobile Menu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                            <i class="bi bi-house-door"></i> Home
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="counter">
+                            <i class="bi bi-plus-square"></i> Counter
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="weather">
+                            <i class="bi bi-cloud-sun"></i> Weather
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="articulo">
+                            <i class="bi bi-file-earmark"></i> Artículo
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="Categorias">
+                            <i class="bi bi-tags"></i> Categoría
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="cliente">
+                            <i class="bi bi-person"></i> Cliente
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="personificacion">
+                            <i class="bi bi-sliders"></i> Personificación
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="Usuario">
+                            <i class="bi bi-gear"></i> Usuario
+                        </NavLink>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
 
     <!-- Main Content -->
-    <div class="main-content">
-        <!-- Top Navigation or Info Row -->
-        <div class="top-row">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <!-- Page Content -->
-        <main class="content">
+    <main class="main-content">
+        <div class="container">
             @Body
-        </main>
-    </div>
+        </div>
+    </main>
 </div>
 
-<!-- Agregar estilos básicos -->
+<!-- Estilos modernos con Bootstrap 5 y animaciones -->
 <style>
-    /* Contenedor principal */
+    /* General Layout */
     .layout-container {
         display: flex;
+        flex-direction: column;
         min-height: 100vh;
         overflow: hidden;
     }
 
-    /* Sidebar */
-    .sidebar {
-        width: 250px;
-        background-color: #f8f9fa; /* Color claro */
-        padding: 1rem;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* Header */
+    .header {
+        background-color: #007bff; /* Color de fondo azul */
     }
 
-    /* Área principal */
+    .navbar-nav .nav-link {
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+    }
+
+    .navbar-nav .nav-link:hover {
+        transform: translateY(-3px);
+        color: #f8f9fa;
+    }
+
+    .navbar-nav .nav-link i {
+        margin-right: 8px;
+        font-size: 1.2rem;
+    }
+
+    /* Main Content */
     .main-content {
         flex: 1;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
+        padding: 2rem;
+        animation: fadeIn 1s ease-in-out;
     }
 
-    /* Barra superior */
-    .top-row {
-        background-color: #007bff; /* Color azul */
-        color: white;
-        padding: 0.5rem 1rem;
-        text-align: right;
+ 
+
+    /* Animación del menú desplegable */
+    .navbar-collapse {
+        transition: max-height 0.5s ease-in-out;
     }
 
-    .top-row a {
-        color: white;
-        text-decoration: none;
-        margin-left: 1rem;
+    .navbar-collapse.collapse {
+        max-height: 0;
     }
 
-    .top-row a:hover {
-        text-decoration: underline;
+    .navbar-collapse.show {
+        max-height: 500px;
     }
 
-    /* Contenido principal */
-    .content {
-        padding: 1rem;
-        overflow: auto;
+  
     }
 </style>
+
+@code {
+    // Aquí puedes agregar cualquier lógica necesaria para el layout
+}

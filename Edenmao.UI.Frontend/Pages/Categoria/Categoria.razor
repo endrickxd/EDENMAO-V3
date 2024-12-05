@@ -3,29 +3,40 @@
 @using Edenmao.UI.Frontend.Services
 @inject CategoriaServices categoriaservices;
 @inject NavigationManager navigation
+
 <div class="container">
 
-    <h3><strong>Categoria</strong></h3>
+    <h3><i class="fas fa-tags"></i> <strong>Categoría</strong></h3>
 
     <div class="NewRegister">
-        <button @onclick="CrearCategoria" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</button>
+        <button @onclick="CrearCategoria" class="NuevoRegistro btn btn-primary mb-3">
+            <i class="fas fa-plus-circle"></i> Registrar Nuevo
+        </button>
     </div>
 
-    <input type="text" @bind="searchText" @oninput="Filtercategoria" placeholder="Buscar Categoria (por (Nombre, Descripcion)" class="form-control search-bar mb-3" />
+    <div class="search-container mb-3">
+        <input type="text" @bind="searchText" @oninput="Filtercategoria"
+               placeholder="Buscar Categoría (por Nombre, Descripción)" class="form-control search-bar" />
+        <i class="fas fa-search search-icon"></i>
+    </div>
 
     @if (categorias == null)
+
     {
-        <p><em>Cargando... Por favor, Espere</em></p>
+        <p><em>Cargando... Por favor, espere</em></p>
     }
+
     else
+
     {
         <div class="table-container">
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>categoria</th>
-                        <th>Descripcion</th>
-                        <th>Fecha de Registro</th>
+                        <th><i class="fas fa-tag"></i> Categoría</th>
+                        <th><i class="fas fa-align-left"></i> Descripción</th>
+                        <th><i class="fas fa-calendar-alt"></i> Fecha de Registro</th>
+                        <th><i class="fas fa-cogs"></i> Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,10 +45,14 @@
                         <tr>
                             <td>@categoria.Nombre</td>
                             <td>@categoria.Descripcion</td>
-                            <td>@categoria.FechaRegistro</td>
+                            <td>@categoria.FechaRegistro.ToString("dd/MM/yyyy")</td>
                             <td>
-                                <button class="btn btn-primary" @onclick="() => EditarCategoria(categoria.Id)">Editar</button>
-                                <button class="btn btn-danger" @onclick="() => EliminarCategoria(categoria.Id)">Eliminar</button>
+                                <button class="btn btn-warning btn-sm" @onclick="() => EditarCategoria(categoria.Id)">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                <button class="btn btn-danger btn-sm" @onclick="() => EliminarCategoria(categoria.Id)">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
                             </td>
                         </tr>
                     }
@@ -47,46 +62,151 @@
     }
 </div>
 
+<style>
+
+    .container {
+        max-width: 1000px;
+        margin-top: 30px;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .search-container {
+        position: relative;
+    }
+
+    .search-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+        color: #28a745;
+    }
+
+    .table-container {
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    th, td {
+        text-align: center;
+    }
+
+    th {
+        background-color: #f8f9fa;
+    }
+
+    button {
+        border-radius: 50px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+    .NewRegister button {
+        width: 100%;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    button i {
+        margin-right: 8px;
+    }
+</style>
+
 @code {
     private IEnumerable<Categoriap>? categorias;
+
     private IEnumerable<Categoriap>? Filteredcategoria;
+
     private string searchText = string.Empty;
 
+
+
     protected override async Task OnInitializedAsync()
+
     {
+
         categorias = await categoriaservices.GetAllCategorias();
+
         Filteredcategoria = categorias;
+
     }
+
+
 
     private void CrearCategoria()
+
     {
+
         navigation.NavigateTo("/categoria/create");
+
     }
+
+
 
     private void EditarCategoria(int id)
+
     {
+
         navigation.NavigateTo($"/Categorias/edit/{id}");
+
     }
+
+
 
     private async Task EliminarCategoria(int id)
+
     {
+
         await categoriaservices.DeleteCategorias(id);
+
         categorias = await categoriaservices.GetAllCategorias();
+
         Filtercategoria();
+
     }
 
+
+
     private void Filtercategoria()
+
     {
+
         if (string.IsNullOrWhiteSpace(searchText))
+
         {
+
             Filteredcategoria = categorias;
+
         }
+
         else
+
         {
+
             Filteredcategoria = categorias?.Where(p =>
+
                 p.Nombre.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+
                 p.Descripcion.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+
                 p.FechaRegistro.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase));
+
         }
+
     }
 }
