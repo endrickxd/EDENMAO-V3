@@ -1,54 +1,73 @@
-﻿@page "/EditarPersonificacion/{id:int}"
+﻿@page "/personificacion/edit/{id:int}"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Personificacion
 @using Edenmao.UI.Frontend.Services
-@using Edenmao.UI.Frontend.Prueba;
-@inject PersonificacionesServices personificacionservices;
-@inject NavigationManager navigation
+@inject PersonificacionServices personificacionservices
+@inject NavigationManager Navigation
 
-<h3>Editar Proveedor</h3>
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
-<EditForm Model="@personificacion" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+<div class="container">
+    <h3>Editar Personificacion</h3>
+    <hr />
 
-    <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <InputText id="nombre" class="form-control" @bind-Value="personificacion.Nombre" />
-    </div>
-    <div class="form-group">
-        <label for="Descripcion">Decripcion</label>
-        <InputText id="Decripcion" class="form-control" @bind-Value="personificacion.Descripcion" />
-    </div>
-    <div class="form-group">
-        <label for="precio">Precio</label>
-        <InputNumber id="Precio" class="form-control" @bind-Value="personificacion.Precio" />
-    </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
-    <button type="button" class="btn btn-secondary" @onclick="Cancelar">Cancelar</button>
-</EditForm>
+    @if (personificacion == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+
+        <EditForm Model="personificacion" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+
+            <div class="form-group">
+                <label for="Nombre">Nombre</label>
+                <InputText id="Nombre" class="form-control" @bind-Value="personificacion.Nombre" />
+                <ValidationMessage For="@(() => personificacion.Nombre)" />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripcion</label>
+                <InputText id="descripcion" class="form-control" @bind-Value="personificacion.Descripcion" />
+                <ValidationMessage For="@(() => personificacion.Descripcion)" />
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio</label>
+                <InputNumber id="precio" class="form-control" @bind-Value="personificacion.Precio" />
+                <ValidationMessage For="@(() => personificacion.Precio)" />
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn btn-success">Registrar Datos</button>
+                <button class="btn-back" @onclick="Volver">Volver</button>
+            </div>
+
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(Mensaje))
+        {
+            <div class="alert alert-success mt-3">@Mensaje</div>
+        }
+    }
+</div>
 
 @code {
     [Parameter]
     public int id { get; set; }
-
-    private Personificacionp personificacion = new Personificacionp();
+    private PersonificacionDTO personificacion;
+    private string Mensaje;
 
     protected override async Task OnInitializedAsync()
     {
         personificacion = await personificacionservices.GetPersonificacionById(id);
-        if (personificacion == null)
-        {
-            navigation.NavigateTo("/personificacion");
-        }
     }
-
     private async Task HandleValidSubmit()
     {
-        await  personificacionservices.UpdatePersonificaciones(id, personificacion);
-        navigation.NavigateTo("/personificacion");
+        await personificacionservices.UpdatePersonificaciones(id, personificacion);
+        Mensaje = "¡Los Datos del Personificacion han sido Actualizados de Manera Satisfactoria!";
     }
-
-    private void Cancelar()
+    private void Volver()
     {
-        navigation.NavigateTo("/personificacion");
+        Navigation.NavigateTo("/personificacion");
     }
 }
