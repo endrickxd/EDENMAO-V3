@@ -1,8 +1,12 @@
-﻿@page "/categoria/create"
-@using Edenmao.UI.Frontend.Modals
+﻿@page "/Categorias/create"
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Categoria
 @using Edenmao.UI.Frontend.Services
 @inject CategoriaServices categoriaservices
 @inject NavigationManager Navigation
+
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
 <div class="container">
     <h3>Crear</h3>
@@ -37,14 +41,13 @@
 </div>
 
 @code {
-    private Categoriap categoria = new Categoriap();
+    private CategoriaDTO categoria = new CategoriaDTO();
     private string Mensaje;
 
     private async Task HandleValidSubmit()
     {
         await categoriaservices.CreateCategorias(categoria);
         Mensaje = "¡Datos de la categoria Guardados de Manera Satisfactoria!";
-        Navigation.NavigateTo("/Categorias");
     }
     private void Volver()
     {
