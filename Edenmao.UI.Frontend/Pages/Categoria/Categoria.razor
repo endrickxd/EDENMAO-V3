@@ -1,14 +1,18 @@
 ﻿@page "/Categorias"
-@using Edenmao.UI.Frontend.Modals
+@using Edenmao.Core.DTOs
+@using Edenmao.Core.DTOs.Categoria
 @using Edenmao.UI.Frontend.Services
 @inject CategoriaServices categoriaservices;
-@inject NavigationManager navigation
-<div class="container">
+@inject NavigationManager Navigation
 
-    <h3><strong>Categoria</strong></h3>
+<link href="~/css/app.css" rel="stylesheet" />
+<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h3><strong>Cliente</strong></h3>
 
     <div class="NewRegister">
-        <button @onclick="CrearCategoria" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</button>
+        <a href="/categorias/create" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</a>
     </div>
 
     <input type="text" @bind="searchText" @oninput="Filtercategoria" placeholder="Buscar Categoria (por (Nombre, Descripcion)" class="form-control search-bar mb-3" />
@@ -36,6 +40,7 @@
                             <td>@categoria.Descripcion</td>
                             <td>@categoria.FechaRegistro</td>
                             <td>
+                                <button class="btn btn-info" @onclick="() => VerCategoria(categoria.Id)">Ver</button>
                                 <button class="btn btn-primary" @onclick="() => EditarCategoria(categoria.Id)">Editar</button>
                                 <button class="btn btn-danger" @onclick="() => EliminarCategoria(categoria.Id)">Eliminar</button>
                             </td>
@@ -48,8 +53,8 @@
 </div>
 
 @code {
-    private IEnumerable<Categoriap>? categorias;
-    private IEnumerable<Categoriap>? Filteredcategoria;
+    private IEnumerable<CategoriaDTO>? categorias;
+    private IEnumerable<CategoriaDTO>? Filteredcategoria;
     private string searchText = string.Empty;
 
     protected override async Task OnInitializedAsync()
@@ -58,14 +63,14 @@
         Filteredcategoria = categorias;
     }
 
-    private void CrearCategoria()
+    private void VerCategoria(int id)
     {
-        navigation.NavigateTo("/categoria/create");
+        Navigation.NavigateTo($"/Categorias/{id}");
     }
 
     private void EditarCategoria(int id)
     {
-        navigation.NavigateTo($"/Categorias/edit/{id}");
+        Navigation.NavigateTo($"/Categorias/edit/{id}");
     }
 
     private async Task EliminarCategoria(int id)
