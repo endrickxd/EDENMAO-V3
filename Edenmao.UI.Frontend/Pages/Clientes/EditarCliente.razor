@@ -2,6 +2,7 @@
 @using Edenmao.UI.Frontend.Services
 @using Edenmao.UI.Frontend.Modals
 @inject ClienteServices clienteservices
+@inject UsuarioServices usuarioservices
 @inject NavigationManager Navigation
 
 <div class="container">
@@ -44,6 +45,17 @@
                 <InputText id="email" class="form-control" @bind-Value="cliente.Email" />
                 <ValidationMessage For="@(() => cliente.Email)" />
             </div>
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <InputSelect id="usuario" class="form-control" @bind-Value="cliente.IdUsuario">
+                    <option value="">------SELECCIONE El Usuario------</option>
+                    @foreach (var usuario in usuarios)
+                    {
+                        <option value="@usuario.Id">@usuario.Nombre</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => cliente.IdUsuario)" />
+            </div>
             <div class="button-container">
                 <button type="submit" class="btn btn-success">Registrar Datos</button>
                 <button class="btn-back" @onclick="Volver">Volver</button>
@@ -61,8 +73,14 @@
 @code {
     [Parameter]
     public int id { get; set; }
+    private List<Usuariop> usuarios = new List<Usuariop>();
     private Clientesp cliente;
     private string Mensaje;
+
+    protected override async Task OnInitializedAsync()
+    {
+        usuarios = (await usuarioservices.GetAllUsuario()).ToList();
+    }
 
     private async Task HandleValidSubmit()
     {

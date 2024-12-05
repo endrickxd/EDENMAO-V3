@@ -2,67 +2,151 @@
 @using Edenmao.UI.Frontend.Services
 @using Edenmao.UI.Frontend.Modals
 @inject ClienteServices clienteservices
+@inject UsuarioServices usuarioservices
 @inject NavigationManager Navigation
 
 <div class="container">
-    <h3>Crear</h3>
+    <h3><i class="fas fa-user-plus"></i> Crear Cliente</h3>
     <hr />
 
     <EditForm Model="cliente" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
 
         <div class="form-group">
-            <label for="Nombre">Nombre</label>
+            <label for="Nombre"><i class="fas fa-user"></i> Nombre</label>
             <InputText id="Nombre" class="form-control" @bind-Value="cliente.Nombre" />
             <ValidationMessage For="@(() => cliente.Nombre)" />
         </div>
+
         <div class="form-group">
-            <label for="Apellido">Apellido</label>
+            <label for="Apellido"><i class="fas fa-user-tag"></i> Apellido</label>
             <InputText id="Apellido" class="form-control" @bind-Value="cliente.Apellido" />
             <ValidationMessage For="@(() => cliente.Apellido)" />
         </div>
+
         <div class="form-group">
-            <label for="telefono">Telefono</label>
+            <label for="telefono"><i class="fas fa-phone-alt"></i> Teléfono</label>
             <InputText id="telefono" class="form-control" @bind-Value="cliente.Telefono" />
             <ValidationMessage For="@(() => cliente.Telefono)" />
         </div>
+
         <div class="form-group">
-            <label for="direccion">Direccion</label>
+            <label for="direccion"><i class="fas fa-map-marker-alt"></i> Dirección</label>
             <InputText id="direccion" class="form-control" @bind-Value="cliente.Direccion" />
             <ValidationMessage For="@(() => cliente.Direccion)" />
         </div>
 
         <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email"><i class="fas fa-envelope"></i> Email</label>
             <InputText id="email" class="form-control" @bind-Value="cliente.Email" />
             <ValidationMessage For="@(() => cliente.Email)" />
         </div>
+        <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <InputSelect id="usuario" class="form-control" @bind-Value="cliente.IdUsuario">
+                <option value="">------SELECCIONE El Usuario------</option>
+                @foreach (var usuario in usuarios)
+                {
+                    <option value="@usuario.Id">@usuario.Nombre</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => cliente.IdUsuario)" />
+        </div>
 
         <div class="button-container">
-            <button type="submit" class="btn btn-success">Registrar Datos</button>
-            <button class="btn-back" @onclick="Volver">Volver</button>
+            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Registrar Datos</button>
+            <button class="btn btn-secondary" @onclick="Volver"><i class="fas fa-arrow-left"></i> Volver</button>
         </div>
 
     </EditForm>
 
     @if (!string.IsNullOrEmpty(Mensaje))
+
     {
-        <div class="alert alert-success mt-3">@Mensaje</div>
+        <div class="alert alert-success mt-3"><i class="fas fa-check-circle"></i> @Mensaje</div>
     }
 
 </div>
 
+
+<style>
+    .container {
+        max-width: 800px;
+        margin-top: 30px;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    input[type="text"], input[type="number"], select {
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+
+    .button-container button {
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+        .button-container button:hover {
+            transform: scale(1.05);
+        }
+
+    .alert {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+        .alert i {
+            margin-right: 10px;
+        }
+</style>
+
 @code {
     private Clientesp cliente = new Clientesp();
+    private List<Usuariop> usuarios = new List<Usuariop>();
     private string Mensaje;
 
-    private async Task HandleValidSubmit()
+
+    protected override async Task OnInitializedAsync()
     {
-        await clienteservices.CreateClientes(cliente);
-        Mensaje = "¡Datos del Cliente Guardados de Manera Satisfactoria!";
+        usuarios = (await usuarioservices.GetAllUsuario()).ToList();
     }
-    private void Volver()
+
+    private async Task HandleValidSubmit()
+
     {
+
+        await clienteservices.CreateClientes(cliente);
+
+        Mensaje = "¡Datos del Cliente Guardados de Manera Satisfactoria!";
+
         Navigation.NavigateTo("/cliente");
+
+    }
+
+
+
+    private void Volver()
+
+    {
+
+        Navigation.NavigateTo("/cliente");
+
     }
 }

@@ -7,73 +7,159 @@
 @inject IJSRuntime JSRuntime
 @inject HttpClient Http
 
-<PageTitle>Persofinicacion</PageTitle>
+<PageTitle>Personificación</PageTitle>
 
-<h1>Persofinicacion</h1>
+<div class="container">
+    <h1 class="text-center mb-4"><i class="fas fa-cogs"></i> <strong>Personificación</strong></h1>
 
-<button class="btn btn-success" @onclick="CrearPersonificacion">Agregar Artículo</button>
+    <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-success btn-lg" @onclick="CrearPersonificacion">
+            <i class="fas fa-plus-circle"></i> Agregar Artículo
+        </button>
+    </div>
 
-@if (personificacions == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Drescripcion</th>
-                <th>Precio</th>
-                <th>Fecha De Registro</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var personificacion in personificacions)
-            {
-                <tr>
-                    <td>@personificacion.Nombre</td>
-                    <td>@personificacion.Descripcion</td>
-                    <td>@personificacion.Precio</td>
-                    <td>@personificacion.FechaRegistro</td>
-                    <td>
-                        <button class="btn btn-primary" @onclick="() => EditarPersonificacion(personificacion.Id)">Editar</button>
-                        <button class="btn btn-danger" @onclick="() => EliminarPersofinicacion(personificacion.Id)">Eliminar</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+    @if (personificacions == null)
+
+    {
+        <p class="text-center"><em>Cargando...</em></p>
+    }
+
+    else
+
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Fecha de Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var personificacion in personificacions)
+                    {
+                        <tr>
+                            <td>@personificacion.Nombre</td>
+                            <td>@personificacion.Descripcion</td>
+                            <td>@personificacion.Precio</td>
+                            <td>@personificacion.FechaRegistro.ToString("dd/MM/yyyy")</td>
+                            <td class="text-center">
+                                <button class="btn btn-primary btn-sm" @onclick="() => EditarPersonificacion(personificacion.Id)">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                <button class="btn btn-danger btn-sm ml-2" @onclick="() => EliminarPersofinicacion(personificacion.Id)">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin-top: 30px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #333;
+    }
+
+    .btn {
+        border-radius: 30px;
+        transition: background-color 0.3s, transform 0.3s ease;
+    }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+    .btn-sm {
+        padding: 8px 12px;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .ml-2 {
+        margin-left: 10px;
+    }
+</style>
+
 
 @code {
     private IEnumerable<Personificacionp> personificacions;
 
+
+
     protected override async Task OnInitializedAsync()
+
     {
+
         personificacions = await personificacionServices.GetAllPersonificacion();
+
     }
+
+
 
     private void CrearPersonificacion()
+
     {
+
         navigation.NavigateTo("/CrearPresonificacion");
+
     }
+
+
 
     private void EditarPersonificacion(int id)
+
     {
+
         try
+
         {
+
             navigation.NavigateTo($"/EditarPersonificacion/{id}");
+
         }
+
         catch (Exception ex)
+
         {
+
             JSRuntime.InvokeVoidAsync("alert", $"Error al navegar a la página de edición: {ex.Message}");
+
         }
-    }
-    private async Task EliminarPersofinicacion(int id)
-    {
-        await personificacionServices.DeletePersonificaciones(id);
-        personificacions = await personificacionServices.GetAllPersonificacion();
+
     }
 
+
+
+    private async Task EliminarPersofinicacion(int id)
+
+    {
+
+        await personificacionServices.DeletePersonificaciones(id);
+
+        personificacions = await personificacionServices.GetAllPersonificacion();
+
+    }
 }
