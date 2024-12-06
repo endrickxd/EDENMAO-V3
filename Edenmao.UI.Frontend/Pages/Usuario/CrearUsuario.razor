@@ -1,5 +1,176 @@
-﻿<h3>CrearUsuario</h3>
+﻿@page "/CreateUsu"
+@using Edenmao.UI.Frontend.Modals
+@using Edenmao.UI.Frontend.Services
+@inject NavigationManager NavigationManager
+@inject UsuarioServices usuarioServices
+@inject RolServices rolServices
+
+<div class="container">
+    <h3 class="text-center mb-4"><i class="fas fa-user-plus"></i> <strong>Registro de Usuario</strong></h3>
+
+    <EditForm Model="newUsuario" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary class="text-danger" />
+
+        <div class="form-container">
+            <div class="form-group">
+                <label for="Correo">Correo</label>
+                <InputText id="email" class="form-control" @bind-Value="newUsuario.Email" placeholder="Ingresa tu correo" />
+            </div>
+
+            <div class="form-group">
+                <label for="Telefono">Teléfono</label>
+                <InputText id="telefono" class="form-control" @bind-Value="newUsuario.Telefono" placeholder="Ingresa tu teléfono" />
+            </div>
+
+            <div class="form-group">
+                <label for="Nombre">Nombre</label>
+                <InputText id="nombre" class="form-control" @bind-Value="newUsuario.Nombre" placeholder="Ingresa tu nombre" />
+            </div>
+
+            <div class="form-group">
+                <label for="Apellido">Apellido</label>
+                <InputText id="apellido" class="form-control" @bind-Value="newUsuario.Apellido" placeholder="Ingresa tu apellido" />
+            </div>
+
+            <div class="form-group">
+                <label for="Rol">Rol</label>
+                @if (roles != null && roles.Any())
+                {
+                    <select id="rol" class="form-control" @bind="newUsuario.IdRol">
+                        <option value="">Seleccione un rol</option>
+                        @foreach (var rol in roles)
+                        {
+                            <option value="@rol.Id">@rol.Nombre</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <p>No hay roles disponibles.</p>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="Usuario">Usuario</label>
+                <InputText id="usuario" class="form-control" @bind-Value="newUsuario.Username" placeholder="Crea un nombre de usuario" />
+            </div>
+
+            <div class="form-group">
+                <label for="Contraseña">Contraseña</label>
+                <InputText id="contraseña" type="password" class="form-control" @bind-Value="newUsuario.Password" placeholder="Crea una contraseña segura" />
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">Agregar Usuario</button>
+            </div>
+        </div>
+    </EditForm>
+</div>
 
 @code {
+    private Usuariop newUsuario = new Usuariop();
 
+    private IEnumerable<Rolp> roles;
+
+
+
+    protected override async Task OnInitializedAsync()
+
+    {
+
+        roles = await rolServices.GetAllRols();
+
+    }
+
+
+
+    private async Task HandleValidSubmit()
+
+    {
+
+        await usuarioServices.CreateUsuarios(newUsuario);
+
+        NavigationManager.NavigateTo("/Usuario");
+
+    }
 }
+
+<style>
+    .container {
+        max-width: 600px;
+        margin-top: 50px;
+    }
+
+    h3 {
+        color: #333;
+        font-size: 1.75rem;
+    }
+
+    .form-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .form-control {
+        border-radius: 30px;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.3s ease-in-out;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+    .d-flex {
+        display: flex;
+    }
+
+    .justify-content-center {
+        justify-content: center;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
+
+    .mb-4 {
+        margin-bottom: 30px;
+    }
+</style>

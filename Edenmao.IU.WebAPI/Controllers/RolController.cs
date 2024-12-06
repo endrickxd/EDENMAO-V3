@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Edenmao.IU.WebAPI.Controllers
 {
-    [Route("api/Roles")]
-    [ApiController]
-    public class RolController : ControllerBase
+	[Route("api/[Controller]")]
+	[ApiController]
+	public class RolController : ControllerBase
     {
         private readonly IRepository<Rol> _repository;
         private readonly IMapper _mapper;
@@ -21,7 +21,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet("ObtenerRoles")]
+        [HttpGet]
+        [Route("ObtenerRol")]
         public async Task<ActionResult<IEnumerable<RolDTO>>> GetAllRoles()
         {
             var roles = await _repository.GetAllAsync();
@@ -29,7 +30,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             return Ok(rolesDtos);
         }
 
-        [HttpGet("ObtenerRolPorID/{id}")]
+        [HttpGet]
+        [Route("ObtenerRolPorID/{id}")]
         public async Task<ActionResult<RolDTO>> GetRolById(int id)
         {
             var rol = await _repository.GetByIdAsync(id);
@@ -52,7 +54,7 @@ namespace Edenmao.IU.WebAPI.Controllers
             return CreatedAtAction(nameof(GetRolById), new { id = rolDTO.Id }, rolDTO);
         }
 
-        [HttpPut("EditarRol/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateRol(int id, [FromBody] CURolDTO rolesDTO)
         {
             if (!ModelState.IsValid)

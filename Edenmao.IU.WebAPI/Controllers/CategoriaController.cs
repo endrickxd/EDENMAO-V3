@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Edenmao.IU.WebAPI.Controllers
 {
-    [Route("api/Categorias")]
-    [ApiController]
-    public class CategoriaController : ControllerBase
+	[Route("api/[Controller]")]
+	[ApiController]
+	public class CategoriaController : ControllerBase
     {
         private readonly IRepository<Categoria> _repository;
         private readonly IMapper _mapper;
@@ -22,7 +22,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet("ObtenerCategorias")]
+        [HttpGet]
+        [Route("ObtenerCategorias")]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetAllCategorias()
         {
             var categorias = await _repository.GetAllAsync();
@@ -30,7 +31,8 @@ namespace Edenmao.IU.WebAPI.Controllers
             return Ok(categoriasDtos);
         }
 
-        [HttpGet("ObtenerCategoriaPorID/{id}")]
+        [HttpGet]
+        [Route("ObtenerCategoriaPorID/{id}")]
         public async Task<ActionResult<CategoriaDTO>> GetCategoriaById(int id)
         {
             var categoria = await _repository.GetByIdAsync(id);
@@ -53,7 +55,7 @@ namespace Edenmao.IU.WebAPI.Controllers
             return CreatedAtAction(nameof(GetCategoriaById), new { id = categoriaDTO.Id }, categoriaDTO);
         }
 
-        [HttpPut("EditarCategoria/{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCategoria(int id, [FromBody] CUCategoriaDTO categoriasDTO)
         {
             if (!ModelState.IsValid)

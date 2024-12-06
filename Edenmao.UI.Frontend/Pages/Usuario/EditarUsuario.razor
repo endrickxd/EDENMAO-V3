@@ -1,5 +1,98 @@
-﻿<h3>EditarUsuario</h3>
+﻿@page "/EditUsuario/{id:int}"
+@using Edenmao.UI.Frontend.Modals;
+@using Edenmao.UI.Frontend.Services;
+@inject UsuarioServices usuarioservices
+@inject RolServices rolservices
+@inject IJSRuntime JSRuntime
+@inject NavigationManager navigation
+
+
+<h3>UsuarioEditar</h3>
+
+<EditForm Model="usuario" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <div class="form-group">
+            <label for="Correo">Email</label>
+            <InputText id="correo" class="form-control" @bind-Value="usuario.Email" />
+        </div>
+        <div class="form-group">
+            <label for="Telefono">Telefono</label>
+            <InputText id="email" class="form-control" @bind-Value="usuario.Telefono" />
+        </div>
+        <div class="form-group">
+            <label for="Nombre">Nombre</label>
+            <InputText id="email" class="form-control" @bind-Value="usuario.Nombre" />
+        </div>
+        <div class="form-group">
+            <label for="Apellido">Apellido</label>
+            <InputText id="email" class="form-control" @bind-Value="usuario.Apellido" />
+        </div>
+        <div class="form-group">
+            <label for="Rol">Rol</label>
+            @if (roles != null && roles.Any())
+            {
+                <select id="Rol" class="form-control" @bind="usuario.Id">
+                    <option value="">Seleccione un rol</option>
+                    @foreach (var rols in roles)
+                    {
+                        <option value="@rols.Id">@rols.Nombre</option>
+                    }
+                </select>
+            }
+            else
+            {
+                <p>No hay roles disponibles.</p>
+            }
+        </div>
+        <div class="form-group">
+            <label for="Usuario">Usuario</label>
+            <InputText id="usuario" class="form-control" @bind-Value="usuario.Username" />
+        </div>
+        <div class="form-group">
+            <label for="Contraseña">Contraseña</label>
+            <InputText id="contraseña" class="form-control" @bind-Value="usuario.Password" />
+        </div>
+        <button type="submit" class="btn btn-primary  mt-3">Guardar</button>
+    </div>
+
+</EditForm>
 
 @code {
+    [Parameter]
+    public int id { get; set; }
 
+    private Usuariop usuario = new Usuariop();
+    private IEnumerable<Rolp> roles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        roles = await rolservices.GetAllRols();
+
+        usuario = await usuarioservices.GetUsuarioById(id);
+        if (usuario == null)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Artículo no encontrado.");
+            navigation.NavigateTo("/Usuario");
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await usuarioservices.UpdateUsuarios(id, usuario);
+        navigation.NavigateTo("/Usuario");
+    }
 }
+<style>
+    .hover-primary:hover {
+        background-color: #53bd44;
+        border-color: none;
+    }
+
+    .hover-secondary:hover {
+        background-color: #5a6268;
+        border-color: none;
+    }
+</style>

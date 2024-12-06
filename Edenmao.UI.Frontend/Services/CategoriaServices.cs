@@ -1,5 +1,4 @@
-﻿using Edenmao.Core.DTOs.Articulo;
-using Edenmao.Core.DTOs.Categoria;
+﻿using Edenmao.UI.Frontend.Modals;
 using System.Net.Http.Json;
 
 namespace Edenmao.UI.Frontend.Services
@@ -12,30 +11,30 @@ namespace Edenmao.UI.Frontend.Services
 		{
 			_httpClient = httpClient;
 		}
-		public async Task<IEnumerable<CategoriaDTO>> GetAllCategorias()
+		public async Task<IEnumerable<Categoriap>> GetAllCategorias()
 		{
-			return await _httpClient.GetFromJsonAsync<IEnumerable<CategoriaDTO>>("api/Categorias");
+			return await _httpClient.GetFromJsonAsync<IEnumerable<Categoriap>>("api/Categoria/ObtenerCategorias");
 		}
-		public async Task<CategoriaDTO> GetCategoriasById(int id)
+		public async Task<Categoriap> GetCategoriasById(int id)
 		{
-			return await _httpClient.GetFromJsonAsync<CategoriaDTO>($"api/Categorias/{id}");
+			return await _httpClient.GetFromJsonAsync<Categoriap>($"api/Categoria/ObtenerCategoriaPorID/{id}");
 		}
-		public async Task CreateCategorias(CategoriaDTO categoria)
+		public async Task CreateCategorias(Categoriap categoria)
 		{
-			await _httpClient.PostAsJsonAsync("api/Categorias", categoria);
+			await _httpClient.PostAsJsonAsync("api/Categoria/CrearCategoria", categoria);
 		}
-		public async Task UpdateCategorias(int id, CategoriaDTO categoria)
+		public async Task UpdateCategorias(int id, Categoriap categoria)
 		{
-			var response = await _httpClient.PutAsJsonAsync($"api/Categorias/{id}", categoria);
+			var response = await _httpClient.PutAsJsonAsync($"api/Categoria/{id}", categoria);
 			if (!response.IsSuccessStatusCode)
 			{
 				var errorMessage = await response.Content.ReadAsStringAsync();
-				throw new Exception($"Error al actualizar las Categorias: {errorMessage}");
+				throw new Exception($"Error al actualizar las Categoria: {errorMessage}");
 			}
 		}
 		public async Task DeleteCategorias(int id)
 		{
-			await _httpClient.DeleteAsync($"api/Categorias/{id}");
+			await _httpClient.DeleteAsync($"api/Categoria/EliminarCategoria/{id}");
 		}
 	}
 }

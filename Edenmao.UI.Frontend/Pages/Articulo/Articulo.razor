@@ -1,18 +1,15 @@
-﻿@* @page "/articulos"
-@using Edenmao.Core.DTOs
-@using Edenmao.Core.DTOs.Articulo
+﻿@page "/articulo"
 @using Edenmao.UI.Frontend.Services
+@using Edenmao.UI.Frontend.Modals
 @inject ArticuloServices articuloservices;
-@inject NavigationManager Navigation
+@inject NavigationManager navigation
 
-<link href="~/css/app.css" rel="stylesheet" />
-<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
 <div class="container">
-    <h3><strong>Cliente</strong></h3>
+    <h3><strong>Articulo</strong></h3>
 
     <div class="NewRegister">
-        <a href="/articulo/create" class="NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</a>
+        <button @onclick="CrearArticulo" class=" NuevoRegistro btn btn-primary mb-3">Registrar Nuevo</button>
     </div>
 
     <input type="text" @bind="searchText" @oninput="FilterArticulo" placeholder="Buscar Articulo (por (Nombre, Descripcion)" class="form-control search-bar mb-3" />
@@ -44,9 +41,8 @@
                             <td>@articulo.Stock</td>
                             <td>@articulo.NombreCategoria</td>
                             <td>
-                                <button class="btn btn-info" @onclick="() => VerCitas(articulo.Id)">Ver</button>
-                                <button class="btn btn-primary" @onclick="() => EditarCitas(articulo.Id)">Editar</button>
-                                <button class="btn btn-danger" @onclick="() => EliminarCitas(articulo.Id)">Eliminar</button>
+                                <button class="btn btn-primary" @onclick="() => EditarArticulos(articulo.Id)">Editar</button>
+                                <button class="btn btn-danger" @onclick="() => EliminarArticulos(articulo.Id)">Eliminar</button>
                             </td>
                         </tr>
                     }
@@ -57,8 +53,8 @@
 </div>
 
 @code {
-    private IEnumerable<ArticuloDTO>? articulos;
-    private IEnumerable<ArticuloDTO>? FilteredArticulo;
+    private IEnumerable<Articulop>? articulos;
+    private IEnumerable<Articulop>? FilteredArticulo;
     private string searchText = string.Empty;
 
     protected override async Task OnInitializedAsync()
@@ -66,18 +62,17 @@
         articulos = await articuloservices.GetAllArticulos();
         FilteredArticulo = articulos;
     }
-
-    private void VerCitas(int id)
+     private void CrearArticulo()
     {
-        Navigation.NavigateTo($"/articulos/{id}");
+        navigation.NavigateTo("/articulo/create");
     }
 
-    private void EditarCitas(int id)
+    private void EditarArticulos(int id)
     {
-        Navigation.NavigateTo($"/articulos/edit/{id}");
+        navigation.NavigateTo($"/articulos/edit/{id}");
     }
 
-    private async Task EliminarCitas(int id)
+    private async Task EliminarArticulos(int id)
     {
         await articuloservices.DeleteArticulos(id);
         articulos = await articuloservices.GetAllArticulos();
@@ -97,7 +92,7 @@
                 p.Descripcion.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
                 p.Precio.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
                 p.Stock.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
-                p.NombreCategoria.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+                p.IdCategoria.ToString().Contains(searchText, StringComparison.OrdinalIgnoreCase));
         }
     }
-} *@
+}

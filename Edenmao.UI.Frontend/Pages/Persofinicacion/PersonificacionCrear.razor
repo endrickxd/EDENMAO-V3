@@ -1,0 +1,40 @@
+﻿@page "/CrearPresonificacion"
+@using Edenmao.UI.Frontend.Prueba
+@using Edenmao.UI.Frontend.Services
+@inject NavigationManager navigation
+@inject PersonificacionesServices personificacionservisces
+
+
+
+<h3>Crear Proveedor</h3>
+
+<EditForm Model="newpersonificacion" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="name">Nombre</label>
+        <InputText id="name" class="form-control" @bind-Value="newpersonificacion.Nombre" />
+    </div>
+    <div class="form-group">
+        <label for="Descripcion">Descripcion</label>
+        <InputText id="Descripcion" class="form-control" @bind-Value="newpersonificacion.Descripcion" />
+    </div>
+    <div class="form-group">
+        <label for="Precio">Precio</label>
+        <InputNumber id="precio" class="form-control" @bind-Value="newpersonificacion.Precio" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</EditForm>
+
+
+@code {
+    private Personificacionp newpersonificacion = new Personificacionp();
+
+    private async Task HandleValidSubmit()
+    {
+        await personificacionservisces.CreatePersonificaciones(newpersonificacion);
+        navigation.NavigateTo("/personificacion");
+    }
+}

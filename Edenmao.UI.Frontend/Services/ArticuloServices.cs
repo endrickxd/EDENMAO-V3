@@ -1,6 +1,6 @@
 ﻿using Edenmao.Core.DTOs.Articulo;
 using Edenmao.Core.DTOs.Categoria;
-using Edenmao.Core.DTOs.Usuario;
+using Edenmao.UI.Frontend.Modals;
 using System.Net.Http.Json;
 
 namespace Edenmao.UI.Frontend.Services
@@ -12,25 +12,21 @@ namespace Edenmao.UI.Frontend.Services
 		{
 			_httpClient = httpClient;
 		}
-		public async Task<IEnumerable<ArticuloDTO>> GetAllArticulos()
+		public async Task<IEnumerable<Articulop>> GetAllArticulos()
 		{
-			return await _httpClient.GetFromJsonAsync<IEnumerable<ArticuloDTO>>("api/Articulos");
+			return await _httpClient.GetFromJsonAsync<IEnumerable<Articulop>>("api/Articulo/ObtenerArticulos");
 		}
-		public async Task<ArticuloDTO> GetArticulosById(int id)
+		public async Task<Articulop> GetArticulosById(int id)
 		{
-			return await _httpClient.GetFromJsonAsync<ArticuloDTO>($"api/Articulos/{id}");
+			return await _httpClient.GetFromJsonAsync<Articulop>($"api/Articulo/ObtenerArticuloPorId/{id}");
 		}
-		public async Task<IEnumerable<CategoriaDTO>> GetAllCategoria()
+		public async Task CreateArticulos(Articulop articulo)
 		{
-			return await _httpClient.GetFromJsonAsync<IEnumerable<CategoriaDTO>>("api/Categorias");
+			await _httpClient.PostAsJsonAsync("api/Articulo/CrearArticulo", articulo);
 		}
-		public async Task CreateArticulos(ArticuloDTO articulo)
+		public async Task UpdateArticulos(int id, Articulop articulo)
 		{
-			await _httpClient.PostAsJsonAsync("api/Articulos", articulo);
-		}
-		public async Task UpdateArticulos(int id, ArticuloDTO articulo)
-		{
-			var response = await _httpClient.PutAsJsonAsync($"api/Articulos/{id}", articulo);
+			var response = await _httpClient.PutAsJsonAsync($"api/Articulo/{id}", articulo);
 			if (!response.IsSuccessStatusCode)
 			{
 				var errorMessage = await response.Content.ReadAsStringAsync();
@@ -39,7 +35,7 @@ namespace Edenmao.UI.Frontend.Services
 		}
 		public async Task DeleteArticulos(int id)
 		{
-			await _httpClient.DeleteAsync($"api/Articulos/{id}");
+			await _httpClient.DeleteAsync($"api/Articulo/EliminarArticulo/{id}");
 		}
 	}
 }

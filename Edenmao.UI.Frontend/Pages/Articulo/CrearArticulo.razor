@@ -1,49 +1,48 @@
-﻿@* @page "/articulo/create"
-@using Edenmao.Core.DTOs
-@using Edenmao.Core.DTOs.Articulo
+﻿@page "/articulo/create"
+@using Edenmao.UI.Frontend.Modals
 @using Edenmao.Core.DTOs.Categoria
 @using Edenmao.UI.Frontend.Services
 @inject ArticuloServices articuloservices
+@inject CategoriaServices categoriaservices
 @inject NavigationManager Navigation
 
-<link href="~/css/app.css" rel="stylesheet" />
-<link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-
 <div class="container">
-    <h3>Crear</h3>
+    <h3><i class="fas fa-box"></i> Crear Artículo</h3>
     <hr />
 
     <EditForm Model="articulo" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
 
         <div class="form-group">
-            <label for="Nombre">Nombre</label>
-            <InputText id="Nombre" class="form-control" @bind-Value="articulo.Nombre"/>
+            <label for="Nombre"><i class="fas fa-tag"></i> Nombre</label>
+            <InputText id="Nombre" class="form-control" @bind-Value="articulo.Nombre" />
             <ValidationMessage For="@(() => articulo.Nombre)" />
         </div>
 
         <div class="form-group">
-            <label for="Descripcion">Descripcion</label>
+            <label for="Descripcion"><i class="fas fa-pencil-alt"></i> Descripción</label>
             <InputText id="Descripcion" class="form-control" @bind-Value="articulo.Descripcion" />
             <ValidationMessage For="@(() => articulo.Descripcion)" />
         </div>
+
         <div class="form-group">
-            <label for="precio">Precio</label>
+            <label for="precio"><i class="fas fa-dollar-sign"></i> Precio</label>
             <InputNumber id="precio" class="form-control" @bind-Value="articulo.Precio" />
             <ValidationMessage For="@(() => articulo.Precio)" />
         </div>
 
         <div class="form-group">
-            <label for="stock">Stock</label>
+            <label for="stock"><i class="fas fa-cogs"></i> Stock</label>
             <InputNumber id="stock" class="form-control" @bind-Value="articulo.Stock" />
             <ValidationMessage For="@(() => articulo.Stock)" />
         </div>
 
         <div class="form-group">
-            <label for="categoria">Categoria</label>
+            <label for="categoria"><i class="fas fa-list-alt"></i> Categoría</label>
             <InputSelect id="categoria" class="form-control" @bind-Value="articulo.IdCategoria">
-                <option value="">------SELECCIONE LA CATEGORIA------</option>
-                @foreach (var categoria in categoria)
+                <option value="">------ SELECCIONE LA CATEGORÍA ------</option>
+                @foreach (var categoria in categoriaps)
+
                 {
                     <option value="@categoria.Id">@categoria.Nombre</option>
                 }
@@ -52,37 +51,108 @@
         </div>
 
         <div class="button-container">
-            <button type="submit" class="btn btn-success">Registrar Datos</button>
-            <button class="btn-back" @onclick="Volver">Volver</button>
+            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Registrar Datos</button>
+            <button class="btn btn-secondary" @onclick="Volver"><i class="fas fa-arrow-left"></i> Volver</button>
         </div>
 
     </EditForm>
 
     @if (!string.IsNullOrEmpty(Mensaje))
+
     {
-        <div class="alert alert-success mt-3">@Mensaje</div>
+        <div class="alert alert-success mt-3"><i class="fas fa-check-circle"></i> @Mensaje</div>
     }
 
 </div>
 
+
+<style>
+
+    .container {
+        max-width: 800px;
+        margin-top: 30px;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    input[type="text"], input[type="number"], select {
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+
+    .button-container button {
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+        .button-container button:hover {
+            transform: scale(1.05);
+        }
+
+    .alert {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+        .alert i {
+            margin-right: 10px;
+        }
+</style>
+
 @code {
-    private ArticuloDTO articulo = new ArticuloDTO();
-    private List<CategoriaDTO> categoria = new List<CategoriaDTO>();
+    private Articulop articulo = new Articulop();
+
+    private List<Categoriap> categoriaps = new List<Categoriap>();
+
     private string Mensaje;
 
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     articulo = (await articuloservices.GetAllCategoria()).ToList();
-    // }
+
+
+    protected override async Task OnInitializedAsync()
+
+    {
+
+        categoriaps = (await categoriaservices.GetAllCategorias()).ToList();
+
+    }
+
+
 
     private async Task HandleValidSubmit()
+
     {
+
         await articuloservices.CreateArticulos(articulo);
-        Mensaje = "¡Datos del articulo Guardados de Manera Satisfactoria!";
+
+        Mensaje = "¡Datos del artículo guardados de manera satisfactoria!";
+
+        Navigation.NavigateTo("/articulo");
+
     }
+
+
+
     private void Volver()
+
     {
-        Navigation.NavigateTo("/articulos");
+
+        Navigation.NavigateTo("/articulo");
+
     }
 }
- *@
